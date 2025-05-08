@@ -1,7 +1,6 @@
 OPENSHIFT := $(shell which oc)
 TERRAFORM := $(shell which terraform)
 ARGOCD_URL := $(shell sops decrypt secrets/secrets.yaml | grep argocd_url | cut -d ' ' -f 2)
-KUBEADMIN_PASSWORD := $(shell sops decrypt secrets/secrets.yaml | grep kubeadmin_password | cut -d ' ' -f 2)
 OPENSHIFT_API_URL := $(shell sops decrypt secrets/secrets.yaml | grep cluster_host | cut -d ' ' -f 2)
 OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yaml | grep tf_namespace | cut -d ' ' -f 2)
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
