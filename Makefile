@@ -1,9 +1,9 @@
 OPENSHIFT := $(shell which oc)
 TERRAFORM := $(shell which terraform)
-OPENSHIFT_API_URL := api.makeitwork.cloud:6443
-OPENSHIFT_TF_NAMESPACE := tf-cluster
+OPENSHIFT_API_URL := $(shell sops decrypt secrets/secrets.yml | grep cluster_host | cut -d ' ' -f 2)
+OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yml | grep tf_namespace | cut -d ' ' -f 2)
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
-DESIRED_CONTEXT := "api-makeitwork-cloud:6443/kubeadmin"
+DESIRED_CONTEXT := $(shell sops decrypt secrets/secrets.yml | grep desired_context | cut -d ' ' -f 2)
 
 .PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks
 
