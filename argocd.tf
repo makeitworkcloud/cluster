@@ -15,7 +15,7 @@ resource "kubernetes_secret" "argocd_github_repo_secret" {
   depends_on = [kubernetes_manifest.openshift_gitops_subscription]
 }
 
-resource "kubernetes_manifest" "argocd_default_project" {
+resource "kubernetes_manifest" "argocd_kustomize_app" {
   manifest = {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
