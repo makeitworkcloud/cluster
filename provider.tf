@@ -17,9 +17,6 @@ terraform {
     kubernetes = {
       source = "hashicorp/kubernetes"
     }
-    #argocd = {
-    #source = "argoproj-labs/argocd"
-    #}
     sops = {
       source = "carlpett/sops"
     }
@@ -35,11 +32,5 @@ provider "helm" {
 provider "kubernetes" {
   config_path = "~/.kube/config"
 }
-
-#provider "argocd" {
-#server_addr = "openshift-gitops-server-openshift-gitops.apps.us1aro.eastus.aroapp.io"
-#username    = "admin"
-#password    = data.sops_file.secret_vars.data["argocd_password"]
-#}
 
 provider "sops" {}

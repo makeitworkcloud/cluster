@@ -1,11 +1,13 @@
 OPENSHIFT := $(shell which oc)
 TERRAFORM := $(shell which terraform)
+ARGOCD_URL := $(shell sops decrypt secrets/secrets.yaml | grep argocd_url | cut -d ' ' -f 2)
+KUBEADMIN_PASSWORD := $(shell sops decrypt secrets/secrets.yaml | grep kubeadmin_password | cut -d ' ' -f 2)
 OPENSHIFT_API_URL := $(shell sops decrypt secrets/secrets.yaml | grep cluster_host | cut -d ' ' -f 2)
 OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yaml | grep tf_namespace | cut -d ' ' -f 2)
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
 DESIRED_CONTEXT := $(shell sops decrypt secrets/secrets.yaml | grep desired_context | cut -d ' ' -f 2)
 
-.PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks
+.PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks argcd-login
 
 help:
 	@echo "General targets"
@@ -81,3 +83,6 @@ pre-commit-install-hooks: .git/hooks/pre-commit
 
 check-context:
 	@ if [[ "${CONTEXT}" == *"${DESIRED_CONTEXT}"* ]]; then echo "Context check passed"; else echo "Context check failed" && exit 1; fi
+
+argocd-login:
+	@ argocd login --skip-test-tls --insecure --username admin --password "$(shell ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d)" ${ARGOCD_URL}

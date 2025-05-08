@@ -27,6 +27,7 @@ resource "kubernetes_manifest" "openshift_gitops_operator_group" {
   depends_on = [kubernetes_namespace.openshift_gitops]
 }
 
+
 resource "kubernetes_manifest" "openshift_gitops_subscription" {
   manifest = {
     apiVersion = "operators.coreos.com/v1alpha1"
@@ -41,6 +42,11 @@ resource "kubernetes_manifest" "openshift_gitops_subscription" {
       source              = "redhat-operators"
       sourceNamespace     = "openshift-marketplace"
       installPlanApproval = "Automatic"
+    }
+  }
+  wait {
+    fields = {
+      "status.state" = "AtLatestKnown"
     }
   }
   depends_on = [kubernetes_manifest.openshift_gitops_operator_group]
