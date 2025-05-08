@@ -1,9 +1,9 @@
 OPENSHIFT := $(shell which oc)
 TERRAFORM := $(shell which terraform)
-OPENSHIFT_API_URL := $(shell sops decrypt secrets/secrets.yml | grep cluster_host | cut -d ' ' -f 2)
-OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yml | grep tf_namespace | cut -d ' ' -f 2)
+OPENSHIFT_API_URL := $(shell sops decrypt secrets/secrets.yaml | grep cluster_host | cut -d ' ' -f 2)
+OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yaml | grep tf_namespace | cut -d ' ' -f 2)
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
-DESIRED_CONTEXT := $(shell sops decrypt secrets/secrets.yml | grep desired_context | cut -d ' ' -f 2)
+DESIRED_CONTEXT := $(shell sops decrypt secrets/secrets.yaml | grep desired_context | cut -d ' ' -f 2)
 
 .PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks
 
@@ -37,6 +37,8 @@ init: check-context clean .terraform/terraform.tfstate
 .terraform/terraform.tfstate:
 	@${OPENSHIFT} get project ${OPENSHIFT_TF_NAMESPACE} > /dev/null 2>&1 || ${OPENSHIFT} new-project ${OPENSHIFT_TF_NAMESPACE}
 	@${TERRAFORM} init -reconfigure -upgrade -input=false -backend-config="host=https://${OPENSHIFT_API_URL}" -backend-config="namespace=${OPENSHIFT_TF_NAMESPACE}"
+
+plan: init .terraform/plan
 
 .terraform/plan:
 	@${TERRAFORM} plan -compact-warnings -out .terraform/plan

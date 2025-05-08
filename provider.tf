@@ -6,7 +6,6 @@ terraform {
   backend "kubernetes" {
     secret_suffix = "tfstate"
     config_path   = "~/.kube/config"
-    namespace     = "tf-cluster"
   }
 
   # please don't pin provider versions unless there is a known bug being worked around.
@@ -29,13 +28,11 @@ terraform {
 
 provider "helm" {
   kubernetes {
-    host        = "https://${var.cluster_host}"
     config_path = "~/.kube/config"
   }
 }
 
 provider "kubernetes" {
-  host        = "https://${var.cluster_host}"
   config_path = "~/.kube/config"
 }
 

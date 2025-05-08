@@ -9,6 +9,7 @@
 
 | Name | Version |
 |------|---------|
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | n/a |
 | <a name="provider_sops"></a> [sops](#provider\_sops) | n/a |
 
 ## Modules
@@ -19,13 +20,14 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [kubernetes_manifest.openshift_gitops_operator_group](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_manifest.openshift_gitops_subscription](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_namespace.openshift_gitops](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
 | [sops_file.secret_vars](https://registry.terraform.io/providers/carlpett/sops/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_cluster_host"></a> [cluster\_host](#input\_cluster\_host) | The hostname:port for Kubernetes/OpenShift. | `string` | n/a | yes |
+No inputs.
 
 ## Outputs
 
