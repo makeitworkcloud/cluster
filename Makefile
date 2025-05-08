@@ -25,10 +25,8 @@ help:
 	@echo "One-time repo init targets"
 	@echo "--------------------------"
 	@echo
-	@echo "\trepo-init-state: initialize this repo with template for storing terraform state."
-	@echo "\trepo-init-module: initialize this repo with template to host a terraform module."
 	@echo "\tpre-commit-install-hooks: install pre-commit hooks"
-	@echo "\tpre-commit-install-deps: install pre-commit dependencies"
+	@echo "\tpre-commit-check-deps: check pre-commit dependencies"
 	@echo
 
 clean:
