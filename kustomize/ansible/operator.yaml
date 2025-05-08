@@ -4,6 +4,11 @@ kind: Project
 metadata:
   name: aap
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: aap
+---
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
