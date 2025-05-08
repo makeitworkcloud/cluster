@@ -23,7 +23,9 @@ No modules.
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_cluster_host"></a> [cluster\_host](#input\_cluster\_host) | The hostname:port for Kubernetes/OpenShift. | `string` | n/a | yes |
 
 ## Outputs
 
