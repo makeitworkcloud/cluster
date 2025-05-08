@@ -3,7 +3,7 @@ TERRAFORM := $(shell which terraform)
 OPENSHIFT_API_URL := api.makeitwork.cloud:6443
 OPENSHIFT_TF_NAMESPACE := tf-cluster
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
-DESIRED_CONTEXT := default/api-makeitwork-cloud:6443/kubeadmin
+DESIRED_CONTEXT := "api-makeitwork-cloud:6443/kubeadmin"
 
 .PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks
 
@@ -80,4 +80,4 @@ pre-commit-install-hooks: .git/hooks/pre-commit
 	@pre-commit install --install-hooks
 
 check-context:
-	@ if [[ "${CONTEXT}" == "${DESIRED_CONTEXT}" ]]; then echo "Context check passed"; else echo "Context check failed" && exit 1; fi
+	@ if [[ "${CONTEXT}" == *"${DESIRED_CONTEXT}"* ]]; then echo "Context check passed"; else echo "Context check failed" && exit 1; fi
