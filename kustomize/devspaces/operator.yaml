@@ -21,6 +21,8 @@ kind: CheCluster
 metadata:
   name: devspaces-tf
   namespace: openshift-devspaces
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   components: {}
   containerRegistry: {}
