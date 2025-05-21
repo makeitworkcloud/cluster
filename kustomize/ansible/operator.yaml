@@ -1,9 +1,4 @@
 ---
-apiVersion: project.openshift.io/v1
-kind: Project
-metadata:
-  name: aap
----
 apiVersion: v1
 kind: Namespace
 metadata:
