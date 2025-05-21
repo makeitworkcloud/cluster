@@ -1,0 +1,34 @@
+---
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  name: openshift-devspaces
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openshift-devspaces
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: devspaces-tf
+  namespace: openshift-operators
+spec:
+  channel: stable
+  installPlanApproval: Automatic
+  name: devspaces
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+---
+apiVersion: org.eclipse.che/v2
+kind: CheCluster
+metadata:
+  name: devspaces-tf
+  namespace: openshift-devspaces
+spec:
+  components: {}
+  containerRegistry: {}
+  devEnvironments: {}
+  gitServices: {}
+  networking: {}

@@ -1,0 +1,56 @@
+apiVersion: automationcontroller.ansible.com/v1beta1
+kind: AutomationController
+metadata:
+  name: controller
+  namespace: aap
+spec:
+  web_readiness_timeout: 1
+  postgres_keepalives_count: 5
+  web_readiness_period: 0
+  postgres_keepalives_idle: 5
+  task_liveness_period: 0
+  metrics_utility_cronjob_report_schedule: '@monthly'
+  create_preload_data: true
+  route_tls_termination_mechanism: Edge
+  garbage_collect_secrets: false
+  ingress_type: Route
+  loadbalancer_port: 80
+  web_liveness_failure_threshold: 3
+  task_liveness_initial_delay: 5
+  no_log: true
+  task_readiness_failure_threshold: 3
+  image_pull_policy: IfNotPresent
+  web_readiness_initial_delay: 20
+  metrics_utility_console_enabled: false
+  web_manage_replicas: true
+  projects_storage_size: 8Gi
+  auto_upgrade: true
+  task_privileged: false
+  task_readiness_period: 0
+  web_liveness_timeout: 1
+  postgres_keepalives: true
+  task_readiness_timeout: 1
+  web_liveness_period: 0
+  metrics_utility_enabled: false
+  postgres_keepalives_interval: 5
+  ipv6_disabled: false
+  task_liveness_failure_threshold: 3
+  projects_storage_access_mode: ReadWriteMany
+  metrics_utility_pvc_claim_size: 5Gi
+  set_self_labels: true
+  web_readiness_failure_threshold: 3
+  web_liveness_initial_delay: 5
+  task_readiness_initial_delay: 20
+  projects_persistence: true
+  task_manage_replicas: true
+  replicas: 1
+  admin_user: admin
+  loadbalancer_protocol: http
+  metrics_utility_cronjob_gather_schedule: '@hourly'
+  task_liveness_timeout: 1
+  hostname: ansible.makeitwork.cloud
+  admin_email: steven@makeitwork.cloud
+  route_host: ansible.makeitwork.cloud
+  route_tls_secret: makeitwork-tls
+  projects_use_existing_claim: _No_
+  projects_storage_class: crc-csi-hostpath-provisioner
