@@ -1,7 +1,13 @@
 ---
-#apiVersion: quay.redhat.com/v1
-#kind: QuayRegistry
-#metadata:
-  #name: makeitwork-registry
-  #annotations:
-    #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: quay-registry
+---
+apiVersion: quay.redhat.com/v1
+kind: QuayRegistry
+metadata:
+  name: makeitwork-registry
+  namespace: quay-registry
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
