@@ -10,6 +10,9 @@ metadata:
   name: arc-system
   namespace: openshift-gitops
 spec:
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
   project: default
   source:
     chart: gha-runner-scale-set-controller
