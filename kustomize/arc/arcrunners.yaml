@@ -17,13 +17,24 @@ spec:
     targetRevision: 0.11.0
     helm:
       releaseName: arc-runners
-      valueFiles:
-        - values-arcrunners.yaml
-      parameters:
-        - name: "githubConfigUrl"
-          value: https://github.com/makeitworkcloud
-        - name: "githubConfigSecret.github_token"
-          value: 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
+      valuesObject:
+        githubConfigUrl: https://github.com/makeitworkcloud
+        githubConfigSecret:
+          github_token: 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
+        template:
+          spec:
+            containers:
+              - name: runner
+                image: ghcr.io/actions/actions-runner:latest
+                command: ["/home/runner/run.sh"]
+                securityContext:
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                      - ALL
+                  runAsNonRoot: true
+                  runAsUser: 1001
+                  runAsGroup: 123
   destination:
     server: "https://kubernetes.default.svc"
     namespace: arc-runners
