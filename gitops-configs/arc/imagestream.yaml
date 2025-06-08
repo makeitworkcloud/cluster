@@ -1,0 +1,12 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: terraform-runner
+  namespace: arc-runners
+spec:
+  tags:
+  - from:
+      kind: DockerImage
+      name: ghcr.io/arc-runners/terraform-runner:latest
+    name: latest

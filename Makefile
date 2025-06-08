@@ -85,3 +85,6 @@ check-context:
 
 argocd-login:
 	@ argocd login --skip-test-tls --insecure --username admin --password "$(shell ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d)" ${ARGOCD_URL}
+
+argocd-sync: argocd-login
+	@ argocd app sync gitops-configs
