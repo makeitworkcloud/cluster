@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T21:29:32Z"
-    mac: ENC[AES256_GCM,data:FdiMSSTwARWNU8hSGGlaW72Y4Y4lV8NgQ6acdTZSr+IWCgqevaKbboSlJBE0OLoLrSL9EACGwd5+yAui4qs8M+JLhR7nW5jr4u82M/FRKYUwENEcwK4IzKfp8QLGLsHCuY0D4Fui6RI+r6ai7514OmmJFtR/s3KQLJImF5xNYCM=,iv:ZeK7SDPqsaR+CChaYOB3bFVD24tYtEnzJm0QA6DNQZE=,tag:bKNeP9ypxAu/GpT1QOZpkg==,type:str]
+    lastmodified: "2025-06-08T21:56:38Z"
+    mac: ENC[AES256_GCM,data:Myu8jD+ZcTXlqYya7R3ENR4dNdJYN0Gd2HOIYKtq6saNCPhzh99v/NQcMTien2VTkXyJJks7j4Yyt2S9CWCDpHS9/rtOv3S3wvnEG8ozT/726Lxwr6uMvMdan81LPTvahBMkjtwbTrf8Ltv2nwI5zdJCO++QBl5jVo8I5wKolJU=,iv:mOIblQBN7p/TCorrv2dDWuV4n1xi7nD8PKb1debvSRw=,tag:r4IiXOjpJa9IhShoiQ/zuQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -29,6 +29,8 @@ metadata:
         kustomize.config.k8s.io/behavior: merge
 data:
     daemon.json:
+        insecure-registries:
+            - image-registry.openshift-image-registry.svc.cluster.local:5000
         mtu: 1400
         default-network-opts:
             bridge:
@@ -44,8 +46,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T21:29:32Z"
-    mac: ENC[AES256_GCM,data:FdiMSSTwARWNU8hSGGlaW72Y4Y4lV8NgQ6acdTZSr+IWCgqevaKbboSlJBE0OLoLrSL9EACGwd5+yAui4qs8M+JLhR7nW5jr4u82M/FRKYUwENEcwK4IzKfp8QLGLsHCuY0D4Fui6RI+r6ai7514OmmJFtR/s3KQLJImF5xNYCM=,iv:ZeK7SDPqsaR+CChaYOB3bFVD24tYtEnzJm0QA6DNQZE=,tag:bKNeP9ypxAu/GpT1QOZpkg==,type:str]
+    lastmodified: "2025-06-08T21:56:38Z"
+    mac: ENC[AES256_GCM,data:Myu8jD+ZcTXlqYya7R3ENR4dNdJYN0Gd2HOIYKtq6saNCPhzh99v/NQcMTien2VTkXyJJks7j4Yyt2S9CWCDpHS9/rtOv3S3wvnEG8ozT/726Lxwr6uMvMdan81LPTvahBMkjtwbTrf8Ltv2nwI5zdJCO++QBl5jVo8I5wKolJU=,iv:mOIblQBN7p/TCorrv2dDWuV4n1xi7nD8PKb1debvSRw=,tag:r4IiXOjpJa9IhShoiQ/zuQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -161,8 +163,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T21:29:32Z"
-    mac: ENC[AES256_GCM,data:FdiMSSTwARWNU8hSGGlaW72Y4Y4lV8NgQ6acdTZSr+IWCgqevaKbboSlJBE0OLoLrSL9EACGwd5+yAui4qs8M+JLhR7nW5jr4u82M/FRKYUwENEcwK4IzKfp8QLGLsHCuY0D4Fui6RI+r6ai7514OmmJFtR/s3KQLJImF5xNYCM=,iv:ZeK7SDPqsaR+CChaYOB3bFVD24tYtEnzJm0QA6DNQZE=,tag:bKNeP9ypxAu/GpT1QOZpkg==,type:str]
+    lastmodified: "2025-06-08T21:56:38Z"
+    mac: ENC[AES256_GCM,data:Myu8jD+ZcTXlqYya7R3ENR4dNdJYN0Gd2HOIYKtq6saNCPhzh99v/NQcMTien2VTkXyJJks7j4Yyt2S9CWCDpHS9/rtOv3S3wvnEG8ozT/726Lxwr6uMvMdan81LPTvahBMkjtwbTrf8Ltv2nwI5zdJCO++QBl5jVo8I5wKolJU=,iv:mOIblQBN7p/TCorrv2dDWuV4n1xi7nD8PKb1debvSRw=,tag:r4IiXOjpJa9IhShoiQ/zuQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -192,7 +194,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T21:29:32Z"
-    mac: ENC[AES256_GCM,data:FdiMSSTwARWNU8hSGGlaW72Y4Y4lV8NgQ6acdTZSr+IWCgqevaKbboSlJBE0OLoLrSL9EACGwd5+yAui4qs8M+JLhR7nW5jr4u82M/FRKYUwENEcwK4IzKfp8QLGLsHCuY0D4Fui6RI+r6ai7514OmmJFtR/s3KQLJImF5xNYCM=,iv:ZeK7SDPqsaR+CChaYOB3bFVD24tYtEnzJm0QA6DNQZE=,tag:bKNeP9ypxAu/GpT1QOZpkg==,type:str]
+    lastmodified: "2025-06-08T21:56:38Z"
+    mac: ENC[AES256_GCM,data:Myu8jD+ZcTXlqYya7R3ENR4dNdJYN0Gd2HOIYKtq6saNCPhzh99v/NQcMTien2VTkXyJJks7j4Yyt2S9CWCDpHS9/rtOv3S3wvnEG8ozT/726Lxwr6uMvMdan81LPTvahBMkjtwbTrf8Ltv2nwI5zdJCO++QBl5jVo8I5wKolJU=,iv:mOIblQBN7p/TCorrv2dDWuV4n1xi7nD8PKb1debvSRw=,tag:r4IiXOjpJa9IhShoiQ/zuQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
