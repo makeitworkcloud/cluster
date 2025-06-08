@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:20:39Z"
-    mac: ENC[AES256_GCM,data:StHWPCrSMUscT1ULEYN12ysM/EMwOK5iDZF3iMq/Nw3pxAieqMke3gFdttmvk6oJlTaZswEdB9zpPKqNMb+EXdvOiG/ngo4PLxHE3a6NDlUWXbI3DSePbhCfrr9YCZw25JXbT50luAR9P2q4cTVDv5e73lwPQrdDU1p1YqbYtrQ=,iv:YntIziJCKe1ysyynmn6zyFKhlj2rvkTr4WGAMZPQW3M=,tag:4Sl8/b0pFOXTdLLGNCI4TQ==,type:str]
+    lastmodified: "2025-06-08T19:25:53Z"
+    mac: ENC[AES256_GCM,data:DeHecan3rAqoMEjMk1wSvvTKrYHZ/sh0O8JuG5PG1qtjfumDW8to4YsWXiCGs59UPGn5/b7Mn9FmnuC43XGO5OH1r24+n0qyDqCMUT9RbydznZWLnkBfGdTMT3biqUPIm+hcx4X3RvLo75DPx33WhGFmdLPwGUpei8RN39KVBQU=,iv:bztTsYeFM74MD2l3jKtKcDsvGQ+mesj3CBZ3yxACWd0=,tag:6+Z6rVgUapQlYHnURcX0Iw==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -44,8 +44,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:20:39Z"
-    mac: ENC[AES256_GCM,data:StHWPCrSMUscT1ULEYN12ysM/EMwOK5iDZF3iMq/Nw3pxAieqMke3gFdttmvk6oJlTaZswEdB9zpPKqNMb+EXdvOiG/ngo4PLxHE3a6NDlUWXbI3DSePbhCfrr9YCZw25JXbT50luAR9P2q4cTVDv5e73lwPQrdDU1p1YqbYtrQ=,iv:YntIziJCKe1ysyynmn6zyFKhlj2rvkTr4WGAMZPQW3M=,tag:4Sl8/b0pFOXTdLLGNCI4TQ==,type:str]
+    lastmodified: "2025-06-08T19:25:53Z"
+    mac: ENC[AES256_GCM,data:DeHecan3rAqoMEjMk1wSvvTKrYHZ/sh0O8JuG5PG1qtjfumDW8to4YsWXiCGs59UPGn5/b7Mn9FmnuC43XGO5OH1r24+n0qyDqCMUT9RbydznZWLnkBfGdTMT3biqUPIm+hcx4X3RvLo75DPx33WhGFmdLPwGUpei8RN39KVBQU=,iv:bztTsYeFM74MD2l3jKtKcDsvGQ+mesj3CBZ3yxACWd0=,tag:6+Z6rVgUapQlYHnURcX0Iw==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -111,7 +111,7 @@ spec:
                                 - name: dind-sock
                                   mountPath: /var/run
                             - name: dind
-                              image: docker:dind
+                              image: docker:dind-rootless
                               args:
                                 - dockerd
                                 - --host=unix:///var/run/docker.sock
@@ -173,8 +173,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:20:39Z"
-    mac: ENC[AES256_GCM,data:StHWPCrSMUscT1ULEYN12ysM/EMwOK5iDZF3iMq/Nw3pxAieqMke3gFdttmvk6oJlTaZswEdB9zpPKqNMb+EXdvOiG/ngo4PLxHE3a6NDlUWXbI3DSePbhCfrr9YCZw25JXbT50luAR9P2q4cTVDv5e73lwPQrdDU1p1YqbYtrQ=,iv:YntIziJCKe1ysyynmn6zyFKhlj2rvkTr4WGAMZPQW3M=,tag:4Sl8/b0pFOXTdLLGNCI4TQ==,type:str]
+    lastmodified: "2025-06-08T19:25:53Z"
+    mac: ENC[AES256_GCM,data:DeHecan3rAqoMEjMk1wSvvTKrYHZ/sh0O8JuG5PG1qtjfumDW8to4YsWXiCGs59UPGn5/b7Mn9FmnuC43XGO5OH1r24+n0qyDqCMUT9RbydznZWLnkBfGdTMT3biqUPIm+hcx4X3RvLo75DPx33WhGFmdLPwGUpei8RN39KVBQU=,iv:bztTsYeFM74MD2l3jKtKcDsvGQ+mesj3CBZ3yxACWd0=,tag:6+Z6rVgUapQlYHnURcX0Iw==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -204,7 +204,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:20:39Z"
-    mac: ENC[AES256_GCM,data:StHWPCrSMUscT1ULEYN12ysM/EMwOK5iDZF3iMq/Nw3pxAieqMke3gFdttmvk6oJlTaZswEdB9zpPKqNMb+EXdvOiG/ngo4PLxHE3a6NDlUWXbI3DSePbhCfrr9YCZw25JXbT50luAR9P2q4cTVDv5e73lwPQrdDU1p1YqbYtrQ=,iv:YntIziJCKe1ysyynmn6zyFKhlj2rvkTr4WGAMZPQW3M=,tag:4Sl8/b0pFOXTdLLGNCI4TQ==,type:str]
+    lastmodified: "2025-06-08T19:25:53Z"
+    mac: ENC[AES256_GCM,data:DeHecan3rAqoMEjMk1wSvvTKrYHZ/sh0O8JuG5PG1qtjfumDW8to4YsWXiCGs59UPGn5/b7Mn9FmnuC43XGO5OH1r24+n0qyDqCMUT9RbydznZWLnkBfGdTMT3biqUPIm+hcx4X3RvLo75DPx33WhGFmdLPwGUpei8RN39KVBQU=,iv:bztTsYeFM74MD2l3jKtKcDsvGQ+mesj3CBZ3yxACWd0=,tag:6+Z6rVgUapQlYHnURcX0Iw==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
