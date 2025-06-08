@@ -13,7 +13,8 @@ spec:
   project: default
   source:
     chart: gha-runner-scale-set-controller
-    repoURL: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+    repoURL: ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+    targetRevision: latest
     helm:
       releaseName: arc-runners
       valuesFile: values-arcrunners.yaml
