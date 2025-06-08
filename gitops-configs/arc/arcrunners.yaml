@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T07:35:27Z"
-    mac: ENC[AES256_GCM,data:D1aaew42gkUscURk+Y+5tkAuZFnaBdVLD2LZjG32tBGtTQPvqeP4MkZmH/BnNRERJ3Ts1FwrUdO/zqRBg+J5GGk9F427PI9n7wEMn3UWTjAhtpfGEkT/ALh93cBeKg8Rkt16ReK+V6mOwpiULkNShTRn2lrab6ZaXUG1ATPQi14=,iv:EOY1Qz/BO+NDBqi3fZ14FIuKh9cK7vBL/XhmkZHbGzY=,tag:xZSL0xkqTynVoYxHKNjNig==,type:str]
+    lastmodified: "2025-06-08T18:36:10Z"
+    mac: ENC[AES256_GCM,data:ICN28fCc0L2O9eyqtxHHfQLM4V3d7g7mYUsUnI2o8MyyI+O+Q7XFRkpjJSmXIoPi1B6S7sPxiPj4GLOizxnR1K9aKnUmQ6onekU8xfj/VeodIB2kkbk1nuVcE509KOBqjtWjHqLrll1vi3ZsIQolUQVXqaDAf60l2Gx+09f6CT4=,iv:7lxAEuWZcbXwCxYwbMbN/qGAdW2VOvQ28lBTdrwdMkQ=,tag:wG5Ii4/Kct64i9WW7h82gA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -30,7 +30,7 @@ metadata:
 spec:
     syncPolicy:
         automated:
-            prune: true
+            prune: false
             selfHeal: true
     project: default
     source:
@@ -75,8 +75,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T07:35:27Z"
-    mac: ENC[AES256_GCM,data:D1aaew42gkUscURk+Y+5tkAuZFnaBdVLD2LZjG32tBGtTQPvqeP4MkZmH/BnNRERJ3Ts1FwrUdO/zqRBg+J5GGk9F427PI9n7wEMn3UWTjAhtpfGEkT/ALh93cBeKg8Rkt16ReK+V6mOwpiULkNShTRn2lrab6ZaXUG1ATPQi14=,iv:EOY1Qz/BO+NDBqi3fZ14FIuKh9cK7vBL/XhmkZHbGzY=,tag:xZSL0xkqTynVoYxHKNjNig==,type:str]
+    lastmodified: "2025-06-08T18:36:10Z"
+    mac: ENC[AES256_GCM,data:ICN28fCc0L2O9eyqtxHHfQLM4V3d7g7mYUsUnI2o8MyyI+O+Q7XFRkpjJSmXIoPi1B6S7sPxiPj4GLOizxnR1K9aKnUmQ6onekU8xfj/VeodIB2kkbk1nuVcE509KOBqjtWjHqLrll1vi3ZsIQolUQVXqaDAf60l2Gx+09f6CT4=,iv:7lxAEuWZcbXwCxYwbMbN/qGAdW2VOvQ28lBTdrwdMkQ=,tag:wG5Ii4/Kct64i9WW7h82gA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -106,7 +106,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T07:35:27Z"
-    mac: ENC[AES256_GCM,data:D1aaew42gkUscURk+Y+5tkAuZFnaBdVLD2LZjG32tBGtTQPvqeP4MkZmH/BnNRERJ3Ts1FwrUdO/zqRBg+J5GGk9F427PI9n7wEMn3UWTjAhtpfGEkT/ALh93cBeKg8Rkt16ReK+V6mOwpiULkNShTRn2lrab6ZaXUG1ATPQi14=,iv:EOY1Qz/BO+NDBqi3fZ14FIuKh9cK7vBL/XhmkZHbGzY=,tag:xZSL0xkqTynVoYxHKNjNig==,type:str]
+    lastmodified: "2025-06-08T18:36:10Z"
+    mac: ENC[AES256_GCM,data:ICN28fCc0L2O9eyqtxHHfQLM4V3d7g7mYUsUnI2o8MyyI+O+Q7XFRkpjJSmXIoPi1B6S7sPxiPj4GLOizxnR1K9aKnUmQ6onekU8xfj/VeodIB2kkbk1nuVcE509KOBqjtWjHqLrll1vi3ZsIQolUQVXqaDAf60l2Gx+09f6CT4=,iv:7lxAEuWZcbXwCxYwbMbN/qGAdW2VOvQ28lBTdrwdMkQ=,tag:wG5Ii4/Kct64i9WW7h82gA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
