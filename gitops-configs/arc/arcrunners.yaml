@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:42:39Z"
-    mac: ENC[AES256_GCM,data:43rw/WigYbejFI1Sc2DWo8IkNRKqwrIalF72NFY/ouzv+HdjgHLRXNshQWd3MqntsKKnOSA5HmTK8jYZxJ02qGErycbGocOZpyPbaDl7P/sL0fJxaVxB9ichtkSg3G93q3QCe7ytEqj4WzGEBh1lkAV0bQ5XCUJj/LwR1lSaZmc=,iv:XhYi9RvRXCPVmdCQm8wkpAyDC6rrNHuSl4djWeVq8fY=,tag:Kx9CFE22lq+ASY4VygFAzw==,type:str]
+    lastmodified: "2025-06-08T19:47:10Z"
+    mac: ENC[AES256_GCM,data:AJqNSNLvi/X4t/YrfV5NJiw2wwVUfSJ80jWkR7OQ3Vq8zYQzYWksrdCy3XD5fdvqRAiNm79fzUO9VShMxWKaRm0mIg1PW7GuDR2MMuUWXky7yzVMEST7Df4693oEThOLHfAwf31gvAnYXynPD87Gm5vqt41al0ufbMtY/yD9bjQ=,iv:2tXraLr8ccfpb7/q56TXMSpm0HCARoiQuJcFwoo9tgE=,tag:Jo7UIYssG1X6wzKHRagu8Q==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -44,8 +44,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:42:39Z"
-    mac: ENC[AES256_GCM,data:43rw/WigYbejFI1Sc2DWo8IkNRKqwrIalF72NFY/ouzv+HdjgHLRXNshQWd3MqntsKKnOSA5HmTK8jYZxJ02qGErycbGocOZpyPbaDl7P/sL0fJxaVxB9ichtkSg3G93q3QCe7ytEqj4WzGEBh1lkAV0bQ5XCUJj/LwR1lSaZmc=,iv:XhYi9RvRXCPVmdCQm8wkpAyDC6rrNHuSl4djWeVq8fY=,tag:Kx9CFE22lq+ASY4VygFAzw==,type:str]
+    lastmodified: "2025-06-08T19:47:10Z"
+    mac: ENC[AES256_GCM,data:AJqNSNLvi/X4t/YrfV5NJiw2wwVUfSJ80jWkR7OQ3Vq8zYQzYWksrdCy3XD5fdvqRAiNm79fzUO9VShMxWKaRm0mIg1PW7GuDR2MMuUWXky7yzVMEST7Df4693oEThOLHfAwf31gvAnYXynPD87Gm5vqt41al0ufbMtY/yD9bjQ=,iv:2tXraLr8ccfpb7/q56TXMSpm0HCARoiQuJcFwoo9tgE=,tag:Jo7UIYssG1X6wzKHRagu8Q==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -92,19 +92,18 @@ spec:
                             - name: init-dind-rootless
                               image: docker:dind-rootless
                               command:
-                                - sudo
                                 - sh
                                 - -c
                                 - |
                                   set -x
                                   cp -a /etc/. /dind-etc/
-                                  echo 'runner:x:1001:1001:runner:/home/runner:/bin/ash' >> /dind-etc/passwd
-                                  echo 'runner:x:1001:' >> /dind-etc/group
+                                  echo 'runner:x:1001:123:runner:/home/runner:/bin/ash' >> /dind-etc/passwd
+                                  echo 'runner:x:123:' >> /dind-etc/group
                                   echo 'runner:100000:65536' >> /dind-etc/subgid
                                   echo 'runner:100000:65536' >> /dind-etc/subuid
                                   chmod 755 /dind-etc;
                                   chmod u=rwx,g=rx+s,o=rx /dind-home
-                                  chown 1001:1001 /dind-home
+                                  chown 1001:123 /dind-home
                               securityContext:
                                 allowPrivilegeEscalation: true
                                 capabilities:
@@ -206,8 +205,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:42:39Z"
-    mac: ENC[AES256_GCM,data:43rw/WigYbejFI1Sc2DWo8IkNRKqwrIalF72NFY/ouzv+HdjgHLRXNshQWd3MqntsKKnOSA5HmTK8jYZxJ02qGErycbGocOZpyPbaDl7P/sL0fJxaVxB9ichtkSg3G93q3QCe7ytEqj4WzGEBh1lkAV0bQ5XCUJj/LwR1lSaZmc=,iv:XhYi9RvRXCPVmdCQm8wkpAyDC6rrNHuSl4djWeVq8fY=,tag:Kx9CFE22lq+ASY4VygFAzw==,type:str]
+    lastmodified: "2025-06-08T19:47:10Z"
+    mac: ENC[AES256_GCM,data:AJqNSNLvi/X4t/YrfV5NJiw2wwVUfSJ80jWkR7OQ3Vq8zYQzYWksrdCy3XD5fdvqRAiNm79fzUO9VShMxWKaRm0mIg1PW7GuDR2MMuUWXky7yzVMEST7Df4693oEThOLHfAwf31gvAnYXynPD87Gm5vqt41al0ufbMtY/yD9bjQ=,iv:2tXraLr8ccfpb7/q56TXMSpm0HCARoiQuJcFwoo9tgE=,tag:Jo7UIYssG1X6wzKHRagu8Q==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -237,7 +236,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:42:39Z"
-    mac: ENC[AES256_GCM,data:43rw/WigYbejFI1Sc2DWo8IkNRKqwrIalF72NFY/ouzv+HdjgHLRXNshQWd3MqntsKKnOSA5HmTK8jYZxJ02qGErycbGocOZpyPbaDl7P/sL0fJxaVxB9ichtkSg3G93q3QCe7ytEqj4WzGEBh1lkAV0bQ5XCUJj/LwR1lSaZmc=,iv:XhYi9RvRXCPVmdCQm8wkpAyDC6rrNHuSl4djWeVq8fY=,tag:Kx9CFE22lq+ASY4VygFAzw==,type:str]
+    lastmodified: "2025-06-08T19:47:10Z"
+    mac: ENC[AES256_GCM,data:AJqNSNLvi/X4t/YrfV5NJiw2wwVUfSJ80jWkR7OQ3Vq8zYQzYWksrdCy3XD5fdvqRAiNm79fzUO9VShMxWKaRm0mIg1PW7GuDR2MMuUWXky7yzVMEST7Df4693oEThOLHfAwf31gvAnYXynPD87Gm5vqt41al0ufbMtY/yD9bjQ=,iv:2tXraLr8ccfpb7/q56TXMSpm0HCARoiQuJcFwoo9tgE=,tag:Jo7UIYssG1X6wzKHRagu8Q==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
