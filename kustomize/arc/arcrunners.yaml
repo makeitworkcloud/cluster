@@ -23,6 +23,8 @@ kind: Application
 metadata:
     name: arc-runner-set
     namespace: openshift-gitops
+    annotations:
+      kustomize.config.k8s.io/behavior: replace
 spec:
     syncPolicy:
         automated:
