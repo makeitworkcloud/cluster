@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T07:28:03Z"
-    mac: ENC[AES256_GCM,data:GD3tjrrDUxAhZ/lOOskY50pCO0v6uqNAXFtse363bJnoYa6euSDM8tNpKLCGvB5FC80xcWNYsG63JyCkbd3jqtVR21h7v0LR4l7K+02Xfwj3ziqCAvDMuR4Z5zXrF2UcQGFcsGmDnZhfGB1DMKPOuNFKJq0zHjXdZ7pSLX3it1Y=,iv:6BWn+5k6yqb1I3Tte6aNSgH1QJq2efzbNtp/0XeP8MA=,tag:V7mh8+bpf1slrKQrZ1junQ==,type:str]
+    lastmodified: "2025-06-08T07:35:27Z"
+    mac: ENC[AES256_GCM,data:D1aaew42gkUscURk+Y+5tkAuZFnaBdVLD2LZjG32tBGtTQPvqeP4MkZmH/BnNRERJ3Ts1FwrUdO/zqRBg+J5GGk9F427PI9n7wEMn3UWTjAhtpfGEkT/ALh93cBeKg8Rkt16ReK+V6mOwpiULkNShTRn2lrab6ZaXUG1ATPQi14=,iv:EOY1Qz/BO+NDBqi3fZ14FIuKh9cK7vBL/XhmkZHbGzY=,tag:xZSL0xkqTynVoYxHKNjNig==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -26,7 +26,7 @@ metadata:
     name: arc-runner-set
     namespace: openshift-gitops
     annotations:
-        kustomize.config.k8s.io/behavior: merge
+        kustomize.config.k8s.io/behavior: replace
 spec:
     syncPolicy:
         automated:
@@ -38,7 +38,7 @@ spec:
         repoURL: ghcr.io/actions/actions-runner-controller-charts
         targetRevision: 0.11.0
         helm:
-            releaseName: arc-runner-set
+            releaseName: arc
             valuesObject:
                 githubConfigUrl: https://github.com/makeitworkcloud
                 githubConfigSecret:
@@ -75,8 +75,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T07:28:03Z"
-    mac: ENC[AES256_GCM,data:GD3tjrrDUxAhZ/lOOskY50pCO0v6uqNAXFtse363bJnoYa6euSDM8tNpKLCGvB5FC80xcWNYsG63JyCkbd3jqtVR21h7v0LR4l7K+02Xfwj3ziqCAvDMuR4Z5zXrF2UcQGFcsGmDnZhfGB1DMKPOuNFKJq0zHjXdZ7pSLX3it1Y=,iv:6BWn+5k6yqb1I3Tte6aNSgH1QJq2efzbNtp/0XeP8MA=,tag:V7mh8+bpf1slrKQrZ1junQ==,type:str]
+    lastmodified: "2025-06-08T07:35:27Z"
+    mac: ENC[AES256_GCM,data:D1aaew42gkUscURk+Y+5tkAuZFnaBdVLD2LZjG32tBGtTQPvqeP4MkZmH/BnNRERJ3Ts1FwrUdO/zqRBg+J5GGk9F427PI9n7wEMn3UWTjAhtpfGEkT/ALh93cBeKg8Rkt16ReK+V6mOwpiULkNShTRn2lrab6ZaXUG1ATPQi14=,iv:EOY1Qz/BO+NDBqi3fZ14FIuKh9cK7vBL/XhmkZHbGzY=,tag:xZSL0xkqTynVoYxHKNjNig==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -106,7 +106,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T07:28:03Z"
-    mac: ENC[AES256_GCM,data:GD3tjrrDUxAhZ/lOOskY50pCO0v6uqNAXFtse363bJnoYa6euSDM8tNpKLCGvB5FC80xcWNYsG63JyCkbd3jqtVR21h7v0LR4l7K+02Xfwj3ziqCAvDMuR4Z5zXrF2UcQGFcsGmDnZhfGB1DMKPOuNFKJq0zHjXdZ7pSLX3it1Y=,iv:6BWn+5k6yqb1I3Tte6aNSgH1QJq2efzbNtp/0XeP8MA=,tag:V7mh8+bpf1slrKQrZ1junQ==,type:str]
+    lastmodified: "2025-06-08T07:35:27Z"
+    mac: ENC[AES256_GCM,data:D1aaew42gkUscURk+Y+5tkAuZFnaBdVLD2LZjG32tBGtTQPvqeP4MkZmH/BnNRERJ3Ts1FwrUdO/zqRBg+J5GGk9F427PI9n7wEMn3UWTjAhtpfGEkT/ALh93cBeKg8Rkt16ReK+V6mOwpiULkNShTRn2lrab6ZaXUG1ATPQi14=,iv:EOY1Qz/BO+NDBqi3fZ14FIuKh9cK7vBL/XhmkZHbGzY=,tag:xZSL0xkqTynVoYxHKNjNig==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
