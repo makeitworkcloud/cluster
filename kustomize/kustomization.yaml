@@ -11,4 +11,4 @@ patches:
     kind: ArgoCD
     name: openshift-gitops
 generators:
-- generator
+- generator/ksops-generator.yaml
