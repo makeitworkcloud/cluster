@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T22:04:11Z"
-    mac: ENC[AES256_GCM,data:Me5DiGrin7z1No5AR61wff2axtp4AqyxAnmLzkUtGLj0+/qLA8Q/ZPot9LdBJoJ8B2qGPDsSAcqoH/ebkANKDoSx1JLoNT6uis05VjLuUipulMJ1o8M7U3pihXEG5tlxBhN9T1U6dj3rt4iAT6FIEhZp2m6L0nRXZffXdiTYLNw=,iv:WpHTFDYwchJuD2WojA1NzJlueNJhDKKrjfqmcsv95p4=,tag:2Ps7l8I4UtZOLvp3kanmbQ==,type:str]
+    lastmodified: "2025-06-08T22:05:16Z"
+    mac: ENC[AES256_GCM,data:6KyM1W+nvR3HNBsg58bYSkVjQIqtxIwU0lWPFP8IiBseC6H+6+4A5gXw8h4SCod558G5fKPxWyWpBnj/F3PcQjHCuHqwGj9cweWNHMnbFDO5zqsDv71WMrVZpaYWRJWJuyPq29ouoZO18y1e4+gpzgNGCDyNp7ugeNHHX4xn3tc=,iv:w2zwUBBniVhTcc887nTzlK56lbXTHo7042MktlZhWG4=,tag:4400zoSbliGL0OGz3uzULA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -28,7 +28,7 @@ metadata:
     annotations:
         kustomize.config.k8s.io/behavior: merge
 data:
-    daemon.json: '{"mtu": "1400", "default-network-opts": {"bridge:" {"com.docker.network.driver.mtu": "1400"}}}'
+    daemon.json: '{"insecure-registries": ["image-registry.openshift-image-registry.cluster.svc.local:5000"],"mtu": "1400", "default-network-opts": {"bridge:" {"com.docker.network.driver.mtu": "1400"}}}'
 sops:
     age:
         - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
@@ -40,8 +40,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T22:04:11Z"
-    mac: ENC[AES256_GCM,data:Me5DiGrin7z1No5AR61wff2axtp4AqyxAnmLzkUtGLj0+/qLA8Q/ZPot9LdBJoJ8B2qGPDsSAcqoH/ebkANKDoSx1JLoNT6uis05VjLuUipulMJ1o8M7U3pihXEG5tlxBhN9T1U6dj3rt4iAT6FIEhZp2m6L0nRXZffXdiTYLNw=,iv:WpHTFDYwchJuD2WojA1NzJlueNJhDKKrjfqmcsv95p4=,tag:2Ps7l8I4UtZOLvp3kanmbQ==,type:str]
+    lastmodified: "2025-06-08T22:05:16Z"
+    mac: ENC[AES256_GCM,data:6KyM1W+nvR3HNBsg58bYSkVjQIqtxIwU0lWPFP8IiBseC6H+6+4A5gXw8h4SCod558G5fKPxWyWpBnj/F3PcQjHCuHqwGj9cweWNHMnbFDO5zqsDv71WMrVZpaYWRJWJuyPq29ouoZO18y1e4+gpzgNGCDyNp7ugeNHHX4xn3tc=,iv:w2zwUBBniVhTcc887nTzlK56lbXTHo7042MktlZhWG4=,tag:4400zoSbliGL0OGz3uzULA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -157,8 +157,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T22:04:11Z"
-    mac: ENC[AES256_GCM,data:Me5DiGrin7z1No5AR61wff2axtp4AqyxAnmLzkUtGLj0+/qLA8Q/ZPot9LdBJoJ8B2qGPDsSAcqoH/ebkANKDoSx1JLoNT6uis05VjLuUipulMJ1o8M7U3pihXEG5tlxBhN9T1U6dj3rt4iAT6FIEhZp2m6L0nRXZffXdiTYLNw=,iv:WpHTFDYwchJuD2WojA1NzJlueNJhDKKrjfqmcsv95p4=,tag:2Ps7l8I4UtZOLvp3kanmbQ==,type:str]
+    lastmodified: "2025-06-08T22:05:16Z"
+    mac: ENC[AES256_GCM,data:6KyM1W+nvR3HNBsg58bYSkVjQIqtxIwU0lWPFP8IiBseC6H+6+4A5gXw8h4SCod558G5fKPxWyWpBnj/F3PcQjHCuHqwGj9cweWNHMnbFDO5zqsDv71WMrVZpaYWRJWJuyPq29ouoZO18y1e4+gpzgNGCDyNp7ugeNHHX4xn3tc=,iv:w2zwUBBniVhTcc887nTzlK56lbXTHo7042MktlZhWG4=,tag:4400zoSbliGL0OGz3uzULA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -188,7 +188,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T22:04:11Z"
-    mac: ENC[AES256_GCM,data:Me5DiGrin7z1No5AR61wff2axtp4AqyxAnmLzkUtGLj0+/qLA8Q/ZPot9LdBJoJ8B2qGPDsSAcqoH/ebkANKDoSx1JLoNT6uis05VjLuUipulMJ1o8M7U3pihXEG5tlxBhN9T1U6dj3rt4iAT6FIEhZp2m6L0nRXZffXdiTYLNw=,iv:WpHTFDYwchJuD2WojA1NzJlueNJhDKKrjfqmcsv95p4=,tag:2Ps7l8I4UtZOLvp3kanmbQ==,type:str]
+    lastmodified: "2025-06-08T22:05:16Z"
+    mac: ENC[AES256_GCM,data:6KyM1W+nvR3HNBsg58bYSkVjQIqtxIwU0lWPFP8IiBseC6H+6+4A5gXw8h4SCod558G5fKPxWyWpBnj/F3PcQjHCuHqwGj9cweWNHMnbFDO5zqsDv71WMrVZpaYWRJWJuyPq29ouoZO18y1e4+gpzgNGCDyNp7ugeNHHX4xn3tc=,iv:w2zwUBBniVhTcc887nTzlK56lbXTHo7042MktlZhWG4=,tag:4400zoSbliGL0OGz3uzULA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
