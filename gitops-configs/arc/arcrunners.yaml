@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:47:10Z"
-    mac: ENC[AES256_GCM,data:AJqNSNLvi/X4t/YrfV5NJiw2wwVUfSJ80jWkR7OQ3Vq8zYQzYWksrdCy3XD5fdvqRAiNm79fzUO9VShMxWKaRm0mIg1PW7GuDR2MMuUWXky7yzVMEST7Df4693oEThOLHfAwf31gvAnYXynPD87Gm5vqt41al0ufbMtY/yD9bjQ=,iv:2tXraLr8ccfpb7/q56TXMSpm0HCARoiQuJcFwoo9tgE=,tag:Jo7UIYssG1X6wzKHRagu8Q==,type:str]
+    lastmodified: "2025-06-08T19:54:09Z"
+    mac: ENC[AES256_GCM,data:h/ZBsgdMt2hxEZs5FlodMaKsC4MiZXXZIrb4H+0gUR17RJezkKI1t5iG7Jr9dfW8wclFUfb9Yvz36zO6kPON5pRaWX936KXk5AOomzm7F3zH3DL9N+LI2efa3CorWUuS+jW4x08hhamJU9uhYEmLPnrJxzKpPNjRKYwv3mM+v14=,iv:Xw0pPrv1kO/fx4m/OfUuNzZZGV+btr4PUuYRgBlvB7U=,tag:BlaX0waG3fTz8kyZNbRN+w==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -44,8 +44,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:47:10Z"
-    mac: ENC[AES256_GCM,data:AJqNSNLvi/X4t/YrfV5NJiw2wwVUfSJ80jWkR7OQ3Vq8zYQzYWksrdCy3XD5fdvqRAiNm79fzUO9VShMxWKaRm0mIg1PW7GuDR2MMuUWXky7yzVMEST7Df4693oEThOLHfAwf31gvAnYXynPD87Gm5vqt41al0ufbMtY/yD9bjQ=,iv:2tXraLr8ccfpb7/q56TXMSpm0HCARoiQuJcFwoo9tgE=,tag:Jo7UIYssG1X6wzKHRagu8Q==,type:str]
+    lastmodified: "2025-06-08T19:54:09Z"
+    mac: ENC[AES256_GCM,data:h/ZBsgdMt2hxEZs5FlodMaKsC4MiZXXZIrb4H+0gUR17RJezkKI1t5iG7Jr9dfW8wclFUfb9Yvz36zO6kPON5pRaWX936KXk5AOomzm7F3zH3DL9N+LI2efa3CorWUuS+jW4x08hhamJU9uhYEmLPnrJxzKpPNjRKYwv3mM+v14=,iv:Xw0pPrv1kO/fx4m/OfUuNzZZGV+btr4PUuYRgBlvB7U=,tag:BlaX0waG3fTz8kyZNbRN+w==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -105,13 +105,7 @@ spec:
                                   chmod u=rwx,g=rx+s,o=rx /dind-home
                                   chown 1001:123 /dind-home
                               securityContext:
-                                allowPrivilegeEscalation: true
-                                capabilities:
-                                    drop:
-                                        - ALL
-                                runAsNonRoot: true
-                                runAsUser: 1001
-                                runAsGroup: 123
+                                runAsUser: 0
                               volumeMounts:
                                 - mountPath: /dind-etc
                                   name: dind-etc
@@ -205,8 +199,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:47:10Z"
-    mac: ENC[AES256_GCM,data:AJqNSNLvi/X4t/YrfV5NJiw2wwVUfSJ80jWkR7OQ3Vq8zYQzYWksrdCy3XD5fdvqRAiNm79fzUO9VShMxWKaRm0mIg1PW7GuDR2MMuUWXky7yzVMEST7Df4693oEThOLHfAwf31gvAnYXynPD87Gm5vqt41al0ufbMtY/yD9bjQ=,iv:2tXraLr8ccfpb7/q56TXMSpm0HCARoiQuJcFwoo9tgE=,tag:Jo7UIYssG1X6wzKHRagu8Q==,type:str]
+    lastmodified: "2025-06-08T19:54:09Z"
+    mac: ENC[AES256_GCM,data:h/ZBsgdMt2hxEZs5FlodMaKsC4MiZXXZIrb4H+0gUR17RJezkKI1t5iG7Jr9dfW8wclFUfb9Yvz36zO6kPON5pRaWX936KXk5AOomzm7F3zH3DL9N+LI2efa3CorWUuS+jW4x08hhamJU9uhYEmLPnrJxzKpPNjRKYwv3mM+v14=,iv:Xw0pPrv1kO/fx4m/OfUuNzZZGV+btr4PUuYRgBlvB7U=,tag:BlaX0waG3fTz8kyZNbRN+w==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -220,7 +214,7 @@ metadata:
 roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
-    name: system:openshift:scc:github-arc
+    name: system:openshift:scc:privileged
 subjects:
     - kind: ServiceAccount
       name: arc-gha-rs-no-permission
@@ -236,7 +230,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:47:10Z"
-    mac: ENC[AES256_GCM,data:AJqNSNLvi/X4t/YrfV5NJiw2wwVUfSJ80jWkR7OQ3Vq8zYQzYWksrdCy3XD5fdvqRAiNm79fzUO9VShMxWKaRm0mIg1PW7GuDR2MMuUWXky7yzVMEST7Df4693oEThOLHfAwf31gvAnYXynPD87Gm5vqt41al0ufbMtY/yD9bjQ=,iv:2tXraLr8ccfpb7/q56TXMSpm0HCARoiQuJcFwoo9tgE=,tag:Jo7UIYssG1X6wzKHRagu8Q==,type:str]
+    lastmodified: "2025-06-08T19:54:09Z"
+    mac: ENC[AES256_GCM,data:h/ZBsgdMt2hxEZs5FlodMaKsC4MiZXXZIrb4H+0gUR17RJezkKI1t5iG7Jr9dfW8wclFUfb9Yvz36zO6kPON5pRaWX936KXk5AOomzm7F3zH3DL9N+LI2efa3CorWUuS+jW4x08hhamJU9uhYEmLPnrJxzKpPNjRKYwv3mM+v14=,iv:Xw0pPrv1kO/fx4m/OfUuNzZZGV+btr4PUuYRgBlvB7U=,tag:BlaX0waG3fTz8kyZNbRN+w==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
