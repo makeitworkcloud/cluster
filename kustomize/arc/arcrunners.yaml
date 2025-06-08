@@ -10,6 +10,10 @@ metadata:
   name: arc-runner-set
   namespace: openshift-gitops
 spec:
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
   project: default
   source:
     chart: gha-runner-scale-set

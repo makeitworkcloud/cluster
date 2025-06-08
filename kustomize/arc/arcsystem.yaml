@@ -11,6 +11,9 @@ metadata:
   namespace: openshift-gitops
 spec:
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - ServerSideApply=true
   project: default
