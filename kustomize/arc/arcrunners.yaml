@@ -1,61 +1,106 @@
----
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: arc-runners
+    name: arc-runners
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwbDBJM0F3em1tVCtKNTdy
+            MENEYk52K2dRQ0p6ZHFCYXNidktFOGdadzFjCmhUWG5BTE8wWFltYTdzT1hIZmY2
+            MHM1ejA0ckdFUVZjWWYxU0pXMzNVZVkKLS0tIHVqSEo4MStKL0tjSHdhTXFBcjFO
+            L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
+            5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-08T06:42:30Z"
+    mac: ENC[AES256_GCM,data:BEwfL6tJFDks3pF2C6DtqyNogVLV6APO3BwbrVpgkQ0vw4fxi6Tt+qEcbXr6LuYsuftFW7Ly0kwIfoOQacDGZMp6geDkNW/1QcyCY+UBGqDA5QaYvrUp6wzgx1v48x7HKmNBjASFV05DFiD2iufHXrWdoMmhp3QrpGrw0JKGxTI=,iv:Xw0jj3UuzRffNh16G4dp+jC75aVUuArXSFOA4nvuyas=,tag:xSczKBGirgyn92bWuJqOTA==,type:str]
+    encrypted_regex: ^(github_token)$
+    version: 3.10.2
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: arc-runner-set
-  namespace: openshift-gitops
+    name: arc-runner-set
+    namespace: openshift-gitops
 spec:
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-  project: default
-  source:
-    chart: gha-runner-scale-set
-    repoURL: ghcr.io/actions/actions-runner-controller-charts
-    targetRevision: 0.11.0
-    helm:
-      releaseName: arc-runner-set
-      valuesObject:
-        githubConfigUrl: https://github.com/makeitworkcloud
-        githubConfigSecret:
-          github_token: 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
-        controllerServiceAccount:
-          namespace: arc-systems
-          name: arc-gha-rs-controller
-        template:
-          spec:
-            containers:
-              - name: runner
-                image: ghcr.io/actions/actions-runner:latest
-                command: ["/home/runner/run.sh"]
-                securityContext:
-                  allowPrivilegeEscalation: false
-                  capabilities:
-                    drop:
-                      - ALL
-                  runAsNonRoot: true
-                  runAsUser: 1001
-                  runAsGroup: 123
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: arc-runners
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+    project: default
+    source:
+        chart: gha-runner-scale-set
+        repoURL: ghcr.io/actions/actions-runner-controller-charts
+        targetRevision: 0.11.0
+        helm:
+            releaseName: arc-runner-set
+            valuesObject:
+                githubConfigUrl: https://github.com/makeitworkcloud
+                githubConfigSecret:
+                    github_token: ENC[AES256_GCM,data:fIRx5SaP1JKyJRclltYuuZgZ7H34kx6HwubWyggbBuVbem0jSADXtw==,iv:KcKMld41/Nyt1IX0dxwWYVjEpLJXEX5l4ctD4Hshdmg=,tag:iO9KoV28YtawRjnEA88ynw==,type:str]
+                controllerServiceAccount:
+                    namespace: arc-systems
+                    name: arc-gha-rs-controller
+                template:
+                    spec:
+                        containers:
+                            - name: runner
+                              image: ghcr.io/actions/actions-runner:latest
+                              command:
+                                - /home/runner/run.sh
+                              securityContext:
+                                allowPrivilegeEscalation: false
+                                capabilities:
+                                    drop:
+                                        - ALL
+                                runAsNonRoot: true
+                                runAsUser: 1001
+                                runAsGroup: 123
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: arc-runners
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwbDBJM0F3em1tVCtKNTdy
+            MENEYk52K2dRQ0p6ZHFCYXNidktFOGdadzFjCmhUWG5BTE8wWFltYTdzT1hIZmY2
+            MHM1ejA0ckdFUVZjWWYxU0pXMzNVZVkKLS0tIHVqSEo4MStKL0tjSHdhTXFBcjFO
+            L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
+            5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-08T06:42:30Z"
+    mac: ENC[AES256_GCM,data:BEwfL6tJFDks3pF2C6DtqyNogVLV6APO3BwbrVpgkQ0vw4fxi6Tt+qEcbXr6LuYsuftFW7Ly0kwIfoOQacDGZMp6geDkNW/1QcyCY+UBGqDA5QaYvrUp6wzgx1v48x7HKmNBjASFV05DFiD2iufHXrWdoMmhp3QrpGrw0JKGxTI=,iv:Xw0jj3UuzRffNh16G4dp+jC75aVUuArXSFOA4nvuyas=,tag:xSczKBGirgyn92bWuJqOTA==,type:str]
+    encrypted_regex: ^(github_token)$
+    version: 3.10.2
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: arc-runners-scc-rb
-  namespace: arc-runners
+    name: arc-runners-scc-rb
+    namespace: arc-runners
 roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: system:openshift:scc:github-arc
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:openshift:scc:github-arc
 subjects:
-- kind: ServiceAccount
-  name: arc-runner-set-gha-rs-no-permission
-  namespace: arc-runners
+    - kind: ServiceAccount
+      name: arc-runner-set-gha-rs-no-permission
+      namespace: arc-runners
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwbDBJM0F3em1tVCtKNTdy
+            MENEYk52K2dRQ0p6ZHFCYXNidktFOGdadzFjCmhUWG5BTE8wWFltYTdzT1hIZmY2
+            MHM1ejA0ckdFUVZjWWYxU0pXMzNVZVkKLS0tIHVqSEo4MStKL0tjSHdhTXFBcjFO
+            L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
+            5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-08T06:42:30Z"
+    mac: ENC[AES256_GCM,data:BEwfL6tJFDks3pF2C6DtqyNogVLV6APO3BwbrVpgkQ0vw4fxi6Tt+qEcbXr6LuYsuftFW7Ly0kwIfoOQacDGZMp6geDkNW/1QcyCY+UBGqDA5QaYvrUp6wzgx1v48x7HKmNBjASFV05DFiD2iufHXrWdoMmhp3QrpGrw0JKGxTI=,iv:Xw0jj3UuzRffNh16G4dp+jC75aVUuArXSFOA4nvuyas=,tag:xSczKBGirgyn92bWuJqOTA==,type:str]
+    encrypted_regex: ^(github_token)$
+    version: 3.10.2

@@ -70,3 +70,15 @@ resource "kubernetes_cluster_role_binding" "openshift_gitops_cluster_admin" {
   }
   depends_on = [kubernetes_manifest.openshift_gitops_subscription]
 }
+
+resource "kubernetes_secret" "sops_age_key" {
+  metadata {
+    name      = "sops-age-key"
+    namespace = "openshift-gitops"
+  }
+  data = {
+    "key.txt" = data.sops_file.secret_vars.data["age_secret_key"]
+  }
+  type       = "Opaque"
+  depends_on = [kubernetes_namespace.openshift_gitops]
+}
