@@ -20,6 +20,10 @@ terraform {
     sops = {
       source = "carlpett/sops"
     }
+
+    kustomization = {
+      source = "kbst/kustomization"
+    }
   }
 }
 
@@ -34,3 +38,7 @@ provider "kubernetes" {
 }
 
 provider "sops" {}
+
+provider "kustomization" {
+  kubeconfig_path = "~/.kube/config"
+}
