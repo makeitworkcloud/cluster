@@ -15,8 +15,37 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T18:53:49Z"
-    mac: ENC[AES256_GCM,data:bKq0Spc8VojAX7tfWGLZIBCdmEPsiw7kYqYkW7Bz0nK4zARGBV/sTbqK9rs5mfZeF4rbss7dStPvcmAN0YFADM4Q0ZP+MaEVSkuNY+6c6p3KyGRBVoZRFjvHpNEPNLQXTB/vuI7fllJZb0QabDPAlB5WRuVVC82x4Zfb6+qq8L0=,iv:e4rDmcNbf4Jr/Fqo0xH6sVaY8u6E6WFaG1z9qDq8wQk=,tag:5Nx+akdcWN7tc11AaBUmXA==,type:str]
+    lastmodified: "2025-06-08T19:10:21Z"
+    mac: ENC[AES256_GCM,data:9anQ7n5pzRkiendINnxatE5yR8u2VH/DgdvzlpKeI9Dir0xS3sLC8eBx3jlK5b371jz8Mk0Znz4wrLuHtQJfPYYG4xizd55HK6lmMBGsTeBlooL2tsTAjcgmEn+V+/4kiS1tQHMv53iximoZnZB4wuWQY/ys2pktXgyL/x7ajFM=,iv:7M3Wm9Hy4OeVSLyE+NgJmC1yyfQoe7AeXaZTvmgZ+08=,tag:5utZZOKs3kn5HzZNjHid2Q==,type:str]
+    encrypted_regex: ^(github_token)$
+    version: 3.10.2
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: docker-daemon-config
+    namespace: arc-runners
+    annotations:
+        kkustomize.config.k8s.io/behavior: merge
+data:
+    daemon.json:
+        mtu: 1400
+        default-network-opts:
+            bridge:
+                com.docker.network.driver.mtu: "1400"
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwbDBJM0F3em1tVCtKNTdy
+            MENEYk52K2dRQ0p6ZHFCYXNidktFOGdadzFjCmhUWG5BTE8wWFltYTdzT1hIZmY2
+            MHM1ejA0ckdFUVZjWWYxU0pXMzNVZVkKLS0tIHVqSEo4MStKL0tjSHdhTXFBcjFO
+            L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
+            5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-08T19:10:21Z"
+    mac: ENC[AES256_GCM,data:9anQ7n5pzRkiendINnxatE5yR8u2VH/DgdvzlpKeI9Dir0xS3sLC8eBx3jlK5b371jz8Mk0Znz4wrLuHtQJfPYYG4xizd55HK6lmMBGsTeBlooL2tsTAjcgmEn+V+/4kiS1tQHMv53iximoZnZB4wuWQY/ys2pktXgyL/x7ajFM=,iv:7M3Wm9Hy4OeVSLyE+NgJmC1yyfQoe7AeXaZTvmgZ+08=,tag:5utZZOKs3kn5HzZNjHid2Q==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -48,6 +77,18 @@ spec:
                     name: arc-gha-rs-controller
                 template:
                     spec:
+                        initContainers:
+                            - name: init-dind-externals
+                              image: ghcr.io/actions/actions-runner:latest
+                              command:
+                                - cp
+                                - -r
+                                - -v
+                                - /home/runner/externals/.
+                                - /home/runner/tmpDir/
+                              volumeMounts:
+                                - name: dind-externals
+                                  mountPath: /home/runner/tmpDir
                         containers:
                             - name: runner
                               image: ghcr.io/actions/actions-runner:latest
@@ -61,6 +102,57 @@ spec:
                                 runAsNonRoot: true
                                 runAsUser: 1001
                                 runAsGroup: 123
+                              env:
+                                - name: DOCKER_HOST
+                                  value: unix:///var/run/docker.sock
+                              volumeMounts:
+                                - name: work
+                                  mountPath: /home/runner/_work
+                                - name: dind-sock
+                                  mountPath: /var/run
+                            - name: dind
+                              image: docker:dind
+                              args:
+                                - dockerd
+                                - --host=unix:///var/run/docker.sock
+                                - --group=$(DOCKER_GROUP_GID)
+                              env:
+                                - name: DOCKER_GROUP_GID
+                                  value: "123"
+                              securityContext:
+                                privileged: true
+                              volumeMounts:
+                                - name: work
+                                  mountPath: /home/runner/_work
+                                - name: var-lib-docker
+                                  mountPath: /var/lib/docker
+                                - name: dind-sock
+                                  mountPath: /var/run
+                                - name: dind-externals
+                                  mountPath: /home/runner/externals
+                                - mountPath: /etc/docker/daemon.json
+                                  name: daemon-json
+                                  readOnly: true
+                                  subPath: daemon.json
+                              volumes:
+                                - name: work
+                                  emptyDir: {}
+                                - name: var-lib-docker
+                                  ephemeral:
+                                    volumeClaimTemplate:
+                                        spec:
+                                            accessModes:
+                                                - ReadWriteOnce
+                                            resources:
+                                                requests:
+                                                    storage: 50Gi
+                                - name: dind-sock
+                                  emptyDir: {}
+                                - name: dind-externals
+                                  emptyDir: {}
+                                - configMap:
+                                    name: docker-daemon-config
+                                  name: daemon-json
     destination:
         server: https://kubernetes.default.svc
         namespace: arc-runners
@@ -75,8 +167,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T18:53:49Z"
-    mac: ENC[AES256_GCM,data:bKq0Spc8VojAX7tfWGLZIBCdmEPsiw7kYqYkW7Bz0nK4zARGBV/sTbqK9rs5mfZeF4rbss7dStPvcmAN0YFADM4Q0ZP+MaEVSkuNY+6c6p3KyGRBVoZRFjvHpNEPNLQXTB/vuI7fllJZb0QabDPAlB5WRuVVC82x4Zfb6+qq8L0=,iv:e4rDmcNbf4Jr/Fqo0xH6sVaY8u6E6WFaG1z9qDq8wQk=,tag:5Nx+akdcWN7tc11AaBUmXA==,type:str]
+    lastmodified: "2025-06-08T19:10:21Z"
+    mac: ENC[AES256_GCM,data:9anQ7n5pzRkiendINnxatE5yR8u2VH/DgdvzlpKeI9Dir0xS3sLC8eBx3jlK5b371jz8Mk0Znz4wrLuHtQJfPYYG4xizd55HK6lmMBGsTeBlooL2tsTAjcgmEn+V+/4kiS1tQHMv53iximoZnZB4wuWQY/ys2pktXgyL/x7ajFM=,iv:7M3Wm9Hy4OeVSLyE+NgJmC1yyfQoe7AeXaZTvmgZ+08=,tag:5utZZOKs3kn5HzZNjHid2Q==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -106,7 +198,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T18:53:49Z"
-    mac: ENC[AES256_GCM,data:bKq0Spc8VojAX7tfWGLZIBCdmEPsiw7kYqYkW7Bz0nK4zARGBV/sTbqK9rs5mfZeF4rbss7dStPvcmAN0YFADM4Q0ZP+MaEVSkuNY+6c6p3KyGRBVoZRFjvHpNEPNLQXTB/vuI7fllJZb0QabDPAlB5WRuVVC82x4Zfb6+qq8L0=,iv:e4rDmcNbf4Jr/Fqo0xH6sVaY8u6E6WFaG1z9qDq8wQk=,tag:5Nx+akdcWN7tc11AaBUmXA==,type:str]
+    lastmodified: "2025-06-08T19:10:21Z"
+    mac: ENC[AES256_GCM,data:9anQ7n5pzRkiendINnxatE5yR8u2VH/DgdvzlpKeI9Dir0xS3sLC8eBx3jlK5b371jz8Mk0Znz4wrLuHtQJfPYYG4xizd55HK6lmMBGsTeBlooL2tsTAjcgmEn+V+/4kiS1tQHMv53iximoZnZB4wuWQY/ys2pktXgyL/x7ajFM=,iv:7M3Wm9Hy4OeVSLyE+NgJmC1yyfQoe7AeXaZTvmgZ+08=,tag:5utZZOKs3kn5HzZNjHid2Q==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
