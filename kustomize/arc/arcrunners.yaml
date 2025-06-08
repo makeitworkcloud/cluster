@@ -25,6 +25,9 @@ spec:
         githubConfigUrl: https://github.com/makeitworkcloud
         githubConfigSecret:
           github_token: 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
+        controllerServiceAccount:
+          namespace: arc-systems
+          name: arc-gha-rs-controller
         template:
           spec:
             containers:
