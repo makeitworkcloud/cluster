@@ -20,14 +20,14 @@ resource "kubernetes_manifest" "argocd_kustomize_app" {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
     metadata = {
-      name      = "kustomize"
+      name      = "gitops-configs"
       namespace = "openshift-gitops"
     }
     spec = {
       project = "default"
       source = {
         repoURL        = "https://github.com/makeitworkcloud/cluster.git"
-        path           = "kustomize"
+        path           = "gitops-configs"
         targetRevision = "main"
       }
       destination = {
