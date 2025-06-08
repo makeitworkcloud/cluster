@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:25:53Z"
-    mac: ENC[AES256_GCM,data:DeHecan3rAqoMEjMk1wSvvTKrYHZ/sh0O8JuG5PG1qtjfumDW8to4YsWXiCGs59UPGn5/b7Mn9FmnuC43XGO5OH1r24+n0qyDqCMUT9RbydznZWLnkBfGdTMT3biqUPIm+hcx4X3RvLo75DPx33WhGFmdLPwGUpei8RN39KVBQU=,iv:bztTsYeFM74MD2l3jKtKcDsvGQ+mesj3CBZ3yxACWd0=,tag:6+Z6rVgUapQlYHnURcX0Iw==,type:str]
+    lastmodified: "2025-06-08T19:41:05Z"
+    mac: ENC[AES256_GCM,data:bislIAId1vnrYbTeLjk2ah8Rg/NeUs7xqY9y1sMLrJGm8bRx5Vr5HXqirFGRfbDocfkW0eCMMzEJ8SHmkQg2Bh1qkYi5RsgwzVbV1cQ9XNG9uPyHpDmeNP9RZDmhOS+qQbcHFYspiJdohDPkfGkx89rhTcIsWE5bwWvcXTljau4=,iv:79eG+CwPyDj7+r7h92aMa5QkoZlrIfeB1RWf1Al84Sc=,tag:cu/cxHC2/5hsJ6J9848R1w==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -44,8 +44,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:25:53Z"
-    mac: ENC[AES256_GCM,data:DeHecan3rAqoMEjMk1wSvvTKrYHZ/sh0O8JuG5PG1qtjfumDW8to4YsWXiCGs59UPGn5/b7Mn9FmnuC43XGO5OH1r24+n0qyDqCMUT9RbydznZWLnkBfGdTMT3biqUPIm+hcx4X3RvLo75DPx33WhGFmdLPwGUpei8RN39KVBQU=,iv:bztTsYeFM74MD2l3jKtKcDsvGQ+mesj3CBZ3yxACWd0=,tag:6+Z6rVgUapQlYHnURcX0Iw==,type:str]
+    lastmodified: "2025-06-08T19:41:05Z"
+    mac: ENC[AES256_GCM,data:bislIAId1vnrYbTeLjk2ah8Rg/NeUs7xqY9y1sMLrJGm8bRx5Vr5HXqirFGRfbDocfkW0eCMMzEJ8SHmkQg2Bh1qkYi5RsgwzVbV1cQ9XNG9uPyHpDmeNP9RZDmhOS+qQbcHFYspiJdohDPkfGkx89rhTcIsWE5bwWvcXTljau4=,iv:79eG+CwPyDj7+r7h92aMa5QkoZlrIfeB1RWf1Al84Sc=,tag:cu/cxHC2/5hsJ6J9848R1w==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -89,6 +89,35 @@ spec:
                               volumeMounts:
                                 - name: dind-externals
                                   mountPath: /home/runner/tmpDir
+                            - name: init-dind-rootless
+                              image: docker:dind-rootless
+                              command:
+                                - sudo
+                                - sh
+                                - -c
+                                - |
+                                  set -x
+                                  cp -a /etc/. /dind-etc/
+                                  echo 'runner:x:1001:1001:runner:/home/runner:/bin/ash' >> /dind-etc/passwd
+                                  echo 'runner:x:1001:' >> /dind-etc/group
+                                  echo 'runner:100000:65536' >> /dind-etc/subgid
+                                  echo 'runner:100000:65536' >> /dind-etc/subuid
+                                  chmod 755 /dind-etc;
+                                  chmod u=rwx,g=rx+s,o=rx /dind-home
+                                  chown 1001:1001 /dind-home
+                              securityContext:
+                                allowPrivilegeEscalation: true
+                                capabilities:
+                                    drop:
+                                        - ALL
+                                runAsNonRoot: true
+                                runAsUser: 1001
+                                runAsGroup: 123
+                              volumeMounts:
+                                - mountPath: /dind-etc
+                                  name: dind-etc
+                                - mountPath: /dind-home
+                                  name: dind-home
                         containers:
                             - name: runner
                               image: ghcr.io/actions/actions-runner:latest
@@ -173,8 +202,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:25:53Z"
-    mac: ENC[AES256_GCM,data:DeHecan3rAqoMEjMk1wSvvTKrYHZ/sh0O8JuG5PG1qtjfumDW8to4YsWXiCGs59UPGn5/b7Mn9FmnuC43XGO5OH1r24+n0qyDqCMUT9RbydznZWLnkBfGdTMT3biqUPIm+hcx4X3RvLo75DPx33WhGFmdLPwGUpei8RN39KVBQU=,iv:bztTsYeFM74MD2l3jKtKcDsvGQ+mesj3CBZ3yxACWd0=,tag:6+Z6rVgUapQlYHnURcX0Iw==,type:str]
+    lastmodified: "2025-06-08T19:41:05Z"
+    mac: ENC[AES256_GCM,data:bislIAId1vnrYbTeLjk2ah8Rg/NeUs7xqY9y1sMLrJGm8bRx5Vr5HXqirFGRfbDocfkW0eCMMzEJ8SHmkQg2Bh1qkYi5RsgwzVbV1cQ9XNG9uPyHpDmeNP9RZDmhOS+qQbcHFYspiJdohDPkfGkx89rhTcIsWE5bwWvcXTljau4=,iv:79eG+CwPyDj7+r7h92aMa5QkoZlrIfeB1RWf1Al84Sc=,tag:cu/cxHC2/5hsJ6J9848R1w==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -204,7 +233,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:25:53Z"
-    mac: ENC[AES256_GCM,data:DeHecan3rAqoMEjMk1wSvvTKrYHZ/sh0O8JuG5PG1qtjfumDW8to4YsWXiCGs59UPGn5/b7Mn9FmnuC43XGO5OH1r24+n0qyDqCMUT9RbydznZWLnkBfGdTMT3biqUPIm+hcx4X3RvLo75DPx33WhGFmdLPwGUpei8RN39KVBQU=,iv:bztTsYeFM74MD2l3jKtKcDsvGQ+mesj3CBZ3yxACWd0=,tag:6+Z6rVgUapQlYHnURcX0Iw==,type:str]
+    lastmodified: "2025-06-08T19:41:05Z"
+    mac: ENC[AES256_GCM,data:bislIAId1vnrYbTeLjk2ah8Rg/NeUs7xqY9y1sMLrJGm8bRx5Vr5HXqirFGRfbDocfkW0eCMMzEJ8SHmkQg2Bh1qkYi5RsgwzVbV1cQ9XNG9uPyHpDmeNP9RZDmhOS+qQbcHFYspiJdohDPkfGkx89rhTcIsWE5bwWvcXTljau4=,iv:79eG+CwPyDj7+r7h92aMa5QkoZlrIfeB1RWf1Al84Sc=,tag:cu/cxHC2/5hsJ6J9848R1w==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
