@@ -13,8 +13,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T06:42:30Z"
-    mac: ENC[AES256_GCM,data:BEwfL6tJFDks3pF2C6DtqyNogVLV6APO3BwbrVpgkQ0vw4fxi6Tt+qEcbXr6LuYsuftFW7Ly0kwIfoOQacDGZMp6geDkNW/1QcyCY+UBGqDA5QaYvrUp6wzgx1v48x7HKmNBjASFV05DFiD2iufHXrWdoMmhp3QrpGrw0JKGxTI=,iv:Xw0jj3UuzRffNh16G4dp+jC75aVUuArXSFOA4nvuyas=,tag:xSczKBGirgyn92bWuJqOTA==,type:str]
+    lastmodified: "2025-06-08T07:26:30Z"
+    mac: ENC[AES256_GCM,data:ML9JJnI/QoXmwFGPHfHWR7hT7Jvs/4NohrhdTLasFd/3hBJM/4CfhNWJFBxCs3jbtCC8+re6xOygbLnHy5dkdnsVOzuPtIMXTG0e+H05dnoZd1ruBRf95Nb7e69WK0Z+TVSlYHVx6IbP4EB6HwxS/5erddNaSzFhGwcMsy317cU=,iv:Gzqi9Z5TOx7/VhOmL9cUepT3r65MfJDb6dhLqu7iUDY=,tag:GpoGVYpMD/oWKGyvZxAoXQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -23,6 +23,8 @@ kind: Application
 metadata:
     name: arc-runner-set
     namespace: openshift-gitops
+    annotations:
+        kustomize.config.k8s.io/behavior: merge
 spec:
     syncPolicy:
         automated:
@@ -71,8 +73,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T06:42:30Z"
-    mac: ENC[AES256_GCM,data:BEwfL6tJFDks3pF2C6DtqyNogVLV6APO3BwbrVpgkQ0vw4fxi6Tt+qEcbXr6LuYsuftFW7Ly0kwIfoOQacDGZMp6geDkNW/1QcyCY+UBGqDA5QaYvrUp6wzgx1v48x7HKmNBjASFV05DFiD2iufHXrWdoMmhp3QrpGrw0JKGxTI=,iv:Xw0jj3UuzRffNh16G4dp+jC75aVUuArXSFOA4nvuyas=,tag:xSczKBGirgyn92bWuJqOTA==,type:str]
+    lastmodified: "2025-06-08T07:26:30Z"
+    mac: ENC[AES256_GCM,data:ML9JJnI/QoXmwFGPHfHWR7hT7Jvs/4NohrhdTLasFd/3hBJM/4CfhNWJFBxCs3jbtCC8+re6xOygbLnHy5dkdnsVOzuPtIMXTG0e+H05dnoZd1ruBRf95Nb7e69WK0Z+TVSlYHVx6IbP4EB6HwxS/5erddNaSzFhGwcMsy317cU=,iv:Gzqi9Z5TOx7/VhOmL9cUepT3r65MfJDb6dhLqu7iUDY=,tag:GpoGVYpMD/oWKGyvZxAoXQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -100,7 +102,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T06:42:30Z"
-    mac: ENC[AES256_GCM,data:BEwfL6tJFDks3pF2C6DtqyNogVLV6APO3BwbrVpgkQ0vw4fxi6Tt+qEcbXr6LuYsuftFW7Ly0kwIfoOQacDGZMp6geDkNW/1QcyCY+UBGqDA5QaYvrUp6wzgx1v48x7HKmNBjASFV05DFiD2iufHXrWdoMmhp3QrpGrw0JKGxTI=,iv:Xw0jj3UuzRffNh16G4dp+jC75aVUuArXSFOA4nvuyas=,tag:xSczKBGirgyn92bWuJqOTA==,type:str]
+    lastmodified: "2025-06-08T07:26:30Z"
+    mac: ENC[AES256_GCM,data:ML9JJnI/QoXmwFGPHfHWR7hT7Jvs/4NohrhdTLasFd/3hBJM/4CfhNWJFBxCs3jbtCC8+re6xOygbLnHy5dkdnsVOzuPtIMXTG0e+H05dnoZd1ruBRf95Nb7e69WK0Z+TVSlYHVx6IbP4EB6HwxS/5erddNaSzFhGwcMsy317cU=,iv:Gzqi9Z5TOx7/VhOmL9cUepT3r65MfJDb6dhLqu7iUDY=,tag:GpoGVYpMD/oWKGyvZxAoXQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
