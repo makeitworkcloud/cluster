@@ -8,7 +8,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: arc-runners
-  namespace: argocd
+  namespace: openshift-gitops
 spec:
   project: default
   source:
@@ -36,7 +36,6 @@ roleRef:
   kind: ClusterRole
   name: system:openshift:scc:github-arc
 subjects:
-- apiGroup: rbac.authorization.k8s.io
-  kind: ServiceAccount
+- kind: ServiceAccount
   name: arc-runners-gha-rs-no-permission
   namespace: arc-runners
