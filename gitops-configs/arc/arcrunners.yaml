@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T18:36:10Z"
-    mac: ENC[AES256_GCM,data:ICN28fCc0L2O9eyqtxHHfQLM4V3d7g7mYUsUnI2o8MyyI+O+Q7XFRkpjJSmXIoPi1B6S7sPxiPj4GLOizxnR1K9aKnUmQ6onekU8xfj/VeodIB2kkbk1nuVcE509KOBqjtWjHqLrll1vi3ZsIQolUQVXqaDAf60l2Gx+09f6CT4=,iv:7lxAEuWZcbXwCxYwbMbN/qGAdW2VOvQ28lBTdrwdMkQ=,tag:wG5Ii4/Kct64i9WW7h82gA==,type:str]
+    lastmodified: "2025-06-08T18:53:49Z"
+    mac: ENC[AES256_GCM,data:bKq0Spc8VojAX7tfWGLZIBCdmEPsiw7kYqYkW7Bz0nK4zARGBV/sTbqK9rs5mfZeF4rbss7dStPvcmAN0YFADM4Q0ZP+MaEVSkuNY+6c6p3KyGRBVoZRFjvHpNEPNLQXTB/vuI7fllJZb0QabDPAlB5WRuVVC82x4Zfb6+qq8L0=,iv:e4rDmcNbf4Jr/Fqo0xH6sVaY8u6E6WFaG1z9qDq8wQk=,tag:5Nx+akdcWN7tc11AaBUmXA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -75,8 +75,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T18:36:10Z"
-    mac: ENC[AES256_GCM,data:ICN28fCc0L2O9eyqtxHHfQLM4V3d7g7mYUsUnI2o8MyyI+O+Q7XFRkpjJSmXIoPi1B6S7sPxiPj4GLOizxnR1K9aKnUmQ6onekU8xfj/VeodIB2kkbk1nuVcE509KOBqjtWjHqLrll1vi3ZsIQolUQVXqaDAf60l2Gx+09f6CT4=,iv:7lxAEuWZcbXwCxYwbMbN/qGAdW2VOvQ28lBTdrwdMkQ=,tag:wG5Ii4/Kct64i9WW7h82gA==,type:str]
+    lastmodified: "2025-06-08T18:53:49Z"
+    mac: ENC[AES256_GCM,data:bKq0Spc8VojAX7tfWGLZIBCdmEPsiw7kYqYkW7Bz0nK4zARGBV/sTbqK9rs5mfZeF4rbss7dStPvcmAN0YFADM4Q0ZP+MaEVSkuNY+6c6p3KyGRBVoZRFjvHpNEPNLQXTB/vuI7fllJZb0QabDPAlB5WRuVVC82x4Zfb6+qq8L0=,iv:e4rDmcNbf4Jr/Fqo0xH6sVaY8u6E6WFaG1z9qDq8wQk=,tag:5Nx+akdcWN7tc11AaBUmXA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -93,7 +93,7 @@ roleRef:
     name: system:openshift:scc:github-arc
 subjects:
     - kind: ServiceAccount
-      name: arc-runner-set-gha-rs-no-permission
+      name: arc-gha-rs-no-permission
       namespace: arc-runners
 sops:
     age:
@@ -106,7 +106,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T18:36:10Z"
-    mac: ENC[AES256_GCM,data:ICN28fCc0L2O9eyqtxHHfQLM4V3d7g7mYUsUnI2o8MyyI+O+Q7XFRkpjJSmXIoPi1B6S7sPxiPj4GLOizxnR1K9aKnUmQ6onekU8xfj/VeodIB2kkbk1nuVcE509KOBqjtWjHqLrll1vi3ZsIQolUQVXqaDAf60l2Gx+09f6CT4=,iv:7lxAEuWZcbXwCxYwbMbN/qGAdW2VOvQ28lBTdrwdMkQ=,tag:wG5Ii4/Kct64i9WW7h82gA==,type:str]
+    lastmodified: "2025-06-08T18:53:49Z"
+    mac: ENC[AES256_GCM,data:bKq0Spc8VojAX7tfWGLZIBCdmEPsiw7kYqYkW7Bz0nK4zARGBV/sTbqK9rs5mfZeF4rbss7dStPvcmAN0YFADM4Q0ZP+MaEVSkuNY+6c6p3KyGRBVoZRFjvHpNEPNLQXTB/vuI7fllJZb0QabDPAlB5WRuVVC82x4Zfb6+qq8L0=,iv:e4rDmcNbf4Jr/Fqo0xH6sVaY8u6E6WFaG1z9qDq8wQk=,tag:5Nx+akdcWN7tc11AaBUmXA==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
