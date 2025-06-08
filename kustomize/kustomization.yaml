@@ -5,10 +5,5 @@ resources:
 - ansible
 - devspaces
 - arc
-patches:
-- path: overlays/argocd.yaml
-  target:
-    kind: ArgoCD
-    name: openshift-gitops
 generators:
 - generator/ksops-generator.yaml
