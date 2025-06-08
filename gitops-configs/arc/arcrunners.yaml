@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:14:13Z"
-    mac: ENC[AES256_GCM,data:2rCAa5DsPEd+crYALAJ3KbhM04GynNgfTqUcfTmixV7hjMErbkrHrH2CgcB6oPGtLVuTQUiD/ofrGH0VAR+yeytXkPXhK5Y4j+myWh0voM5Y/75yq9S+FE365l2vKCJ9E/FJg3OwLWni/sZqy+xUG0iJp+5DPvLXPeg330wIFHI=,iv:oLUpHuCp2CGrWUPaOYoF/MHHOn39fvn06Xd2og/DR8U=,tag:2Ht6qM1M6LhGtBpVyNtAmg==,type:str]
+    lastmodified: "2025-06-08T19:20:39Z"
+    mac: ENC[AES256_GCM,data:StHWPCrSMUscT1ULEYN12ysM/EMwOK5iDZF3iMq/Nw3pxAieqMke3gFdttmvk6oJlTaZswEdB9zpPKqNMb+EXdvOiG/ngo4PLxHE3a6NDlUWXbI3DSePbhCfrr9YCZw25JXbT50luAR9P2q4cTVDv5e73lwPQrdDU1p1YqbYtrQ=,iv:YntIziJCKe1ysyynmn6zyFKhlj2rvkTr4WGAMZPQW3M=,tag:4Sl8/b0pFOXTdLLGNCI4TQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -44,8 +44,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:14:13Z"
-    mac: ENC[AES256_GCM,data:2rCAa5DsPEd+crYALAJ3KbhM04GynNgfTqUcfTmixV7hjMErbkrHrH2CgcB6oPGtLVuTQUiD/ofrGH0VAR+yeytXkPXhK5Y4j+myWh0voM5Y/75yq9S+FE365l2vKCJ9E/FJg3OwLWni/sZqy+xUG0iJp+5DPvLXPeg330wIFHI=,iv:oLUpHuCp2CGrWUPaOYoF/MHHOn39fvn06Xd2og/DR8U=,tag:2Ht6qM1M6LhGtBpVyNtAmg==,type:str]
+    lastmodified: "2025-06-08T19:20:39Z"
+    mac: ENC[AES256_GCM,data:StHWPCrSMUscT1ULEYN12ysM/EMwOK5iDZF3iMq/Nw3pxAieqMke3gFdttmvk6oJlTaZswEdB9zpPKqNMb+EXdvOiG/ngo4PLxHE3a6NDlUWXbI3DSePbhCfrr9YCZw25JXbT50luAR9P2q4cTVDv5e73lwPQrdDU1p1YqbYtrQ=,iv:YntIziJCKe1ysyynmn6zyFKhlj2rvkTr4WGAMZPQW3M=,tag:4Sl8/b0pFOXTdLLGNCI4TQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -140,25 +140,25 @@ spec:
                                   name: daemon-json
                                   readOnly: true
                                   subPath: daemon.json
-                              volumes:
-                                - name: work
-                                  emptyDir: {}
-                                - name: var-lib-docker
-                                  ephemeral:
-                                    volumeClaimTemplate:
-                                        spec:
-                                            accessModes:
-                                                - ReadWriteOnce
-                                            resources:
-                                                requests:
-                                                    storage: 50Gi
-                                - name: dind-sock
-                                  emptyDir: {}
-                                - name: dind-externals
-                                  emptyDir: {}
-                                - configMap:
-                                    name: docker-daemon-config
-                                  name: daemon-json
+                        volumes:
+                            - name: work
+                              emptyDir: {}
+                            - name: var-lib-docker
+                              ephemeral:
+                                volumeClaimTemplate:
+                                    spec:
+                                        accessModes:
+                                            - ReadWriteOnce
+                                        resources:
+                                            requests:
+                                                storage: 50Gi
+                            - name: dind-sock
+                              emptyDir: {}
+                            - name: dind-externals
+                              emptyDir: {}
+                            - configMap:
+                                name: docker-daemon-config
+                              name: daemon-json
     destination:
         server: https://kubernetes.default.svc
         namespace: arc-runners
@@ -173,8 +173,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:14:13Z"
-    mac: ENC[AES256_GCM,data:2rCAa5DsPEd+crYALAJ3KbhM04GynNgfTqUcfTmixV7hjMErbkrHrH2CgcB6oPGtLVuTQUiD/ofrGH0VAR+yeytXkPXhK5Y4j+myWh0voM5Y/75yq9S+FE365l2vKCJ9E/FJg3OwLWni/sZqy+xUG0iJp+5DPvLXPeg330wIFHI=,iv:oLUpHuCp2CGrWUPaOYoF/MHHOn39fvn06Xd2og/DR8U=,tag:2Ht6qM1M6LhGtBpVyNtAmg==,type:str]
+    lastmodified: "2025-06-08T19:20:39Z"
+    mac: ENC[AES256_GCM,data:StHWPCrSMUscT1ULEYN12ysM/EMwOK5iDZF3iMq/Nw3pxAieqMke3gFdttmvk6oJlTaZswEdB9zpPKqNMb+EXdvOiG/ngo4PLxHE3a6NDlUWXbI3DSePbhCfrr9YCZw25JXbT50luAR9P2q4cTVDv5e73lwPQrdDU1p1YqbYtrQ=,iv:YntIziJCKe1ysyynmn6zyFKhlj2rvkTr4WGAMZPQW3M=,tag:4Sl8/b0pFOXTdLLGNCI4TQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -204,7 +204,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T19:14:13Z"
-    mac: ENC[AES256_GCM,data:2rCAa5DsPEd+crYALAJ3KbhM04GynNgfTqUcfTmixV7hjMErbkrHrH2CgcB6oPGtLVuTQUiD/ofrGH0VAR+yeytXkPXhK5Y4j+myWh0voM5Y/75yq9S+FE365l2vKCJ9E/FJg3OwLWni/sZqy+xUG0iJp+5DPvLXPeg330wIFHI=,iv:oLUpHuCp2CGrWUPaOYoF/MHHOn39fvn06Xd2og/DR8U=,tag:2Ht6qM1M6LhGtBpVyNtAmg==,type:str]
+    lastmodified: "2025-06-08T19:20:39Z"
+    mac: ENC[AES256_GCM,data:StHWPCrSMUscT1ULEYN12ysM/EMwOK5iDZF3iMq/Nw3pxAieqMke3gFdttmvk6oJlTaZswEdB9zpPKqNMb+EXdvOiG/ngo4PLxHE3a6NDlUWXbI3DSePbhCfrr9YCZw25JXbT50luAR9P2q4cTVDv5e73lwPQrdDU1p1YqbYtrQ=,iv:YntIziJCKe1ysyynmn6zyFKhlj2rvkTr4WGAMZPQW3M=,tag:4Sl8/b0pFOXTdLLGNCI4TQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
