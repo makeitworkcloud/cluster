@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T20:14:37Z"
-    mac: ENC[AES256_GCM,data:SFPeimnFICEeA+nW318PiWjH9XGKjfc02TnqF943Y6+k0lxcvpGZcGZygKmwB4S8g/VU4Gedv6n293c5+nJSXQoPEL0hjIJaJPfnmEiag72CJlNYwbDypoG6sLURYXFMGdSf4SKDnjbRvH6Zv++YJVlMgVvGUCpPzQ+i0jLnlxc=,iv:VkXgsmCOdcx024lSSTlN3TeOy+QtI8B6z+/ufbp1t4I=,tag:t66DZ5PqYtu35SdhYikKDg==,type:str]
+    lastmodified: "2025-06-08T21:29:32Z"
+    mac: ENC[AES256_GCM,data:FdiMSSTwARWNU8hSGGlaW72Y4Y4lV8NgQ6acdTZSr+IWCgqevaKbboSlJBE0OLoLrSL9EACGwd5+yAui4qs8M+JLhR7nW5jr4u82M/FRKYUwENEcwK4IzKfp8QLGLsHCuY0D4Fui6RI+r6ai7514OmmJFtR/s3KQLJImF5xNYCM=,iv:ZeK7SDPqsaR+CChaYOB3bFVD24tYtEnzJm0QA6DNQZE=,tag:bKNeP9ypxAu/GpT1QOZpkg==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -44,8 +44,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T20:14:37Z"
-    mac: ENC[AES256_GCM,data:SFPeimnFICEeA+nW318PiWjH9XGKjfc02TnqF943Y6+k0lxcvpGZcGZygKmwB4S8g/VU4Gedv6n293c5+nJSXQoPEL0hjIJaJPfnmEiag72CJlNYwbDypoG6sLURYXFMGdSf4SKDnjbRvH6Zv++YJVlMgVvGUCpPzQ+i0jLnlxc=,iv:VkXgsmCOdcx024lSSTlN3TeOy+QtI8B6z+/ufbp1t4I=,tag:t66DZ5PqYtu35SdhYikKDg==,type:str]
+    lastmodified: "2025-06-08T21:29:32Z"
+    mac: ENC[AES256_GCM,data:FdiMSSTwARWNU8hSGGlaW72Y4Y4lV8NgQ6acdTZSr+IWCgqevaKbboSlJBE0OLoLrSL9EACGwd5+yAui4qs8M+JLhR7nW5jr4u82M/FRKYUwENEcwK4IzKfp8QLGLsHCuY0D4Fui6RI+r6ai7514OmmJFtR/s3KQLJImF5xNYCM=,iv:ZeK7SDPqsaR+CChaYOB3bFVD24tYtEnzJm0QA6DNQZE=,tag:bKNeP9ypxAu/GpT1QOZpkg==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -70,6 +70,7 @@ spec:
             releaseName: arc
             valuesObject:
                 minRunners: 1
+                maxRunners: 1
                 githubConfigUrl: https://github.com/makeitworkcloud
                 githubConfigSecret:
                     github_token: ENC[AES256_GCM,data:fIRx5SaP1JKyJRclltYuuZgZ7H34kx6HwubWyggbBuVbem0jSADXtw==,iv:KcKMld41/Nyt1IX0dxwWYVjEpLJXEX5l4ctD4Hshdmg=,tag:iO9KoV28YtawRjnEA88ynw==,type:str]
@@ -90,28 +91,6 @@ spec:
                               volumeMounts:
                                 - name: dind-externals
                                   mountPath: /home/runner/tmpDir
-                            - name: init-dind-rootless
-                              image: docker:dind-rootless
-                              command:
-                                - sh
-                                - -c
-                                - |
-                                  set -x
-                                  cp -a /etc/. /dind-etc/
-                                  echo 'runner:x:1001:123:runner:/home/runner:/bin/ash' >> /dind-etc/passwd
-                                  echo 'runner:x:123:' >> /dind-etc/group
-                                  echo 'runner:100000:65536' >> /dind-etc/subgid
-                                  echo 'runner:100000:65536' >> /dind-etc/subuid
-                                  chmod 755 /dind-etc;
-                                  chmod u=rwx,g=rx+s,o=rx /dind-home
-                                  chown 1001:123 /dind-home
-                              securityContext:
-                                runAsUser: 0
-                              volumeMounts:
-                                - mountPath: /dind-etc
-                                  name: dind-etc
-                                - mountPath: /dind-home
-                                  name: dind-home
                         containers:
                             - name: runner
                               image: ghcr.io/actions/actions-runner:latest
@@ -168,10 +147,6 @@ spec:
                             - configMap:
                                 name: docker-daemon-config
                               name: daemon-json
-                            - name: dind-etc
-                              emptyDir: {}
-                            - name: dind-home
-                              emptyDir: {}
     destination:
         server: https://kubernetes.default.svc
         namespace: arc-runners
@@ -186,8 +161,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T20:14:37Z"
-    mac: ENC[AES256_GCM,data:SFPeimnFICEeA+nW318PiWjH9XGKjfc02TnqF943Y6+k0lxcvpGZcGZygKmwB4S8g/VU4Gedv6n293c5+nJSXQoPEL0hjIJaJPfnmEiag72CJlNYwbDypoG6sLURYXFMGdSf4SKDnjbRvH6Zv++YJVlMgVvGUCpPzQ+i0jLnlxc=,iv:VkXgsmCOdcx024lSSTlN3TeOy+QtI8B6z+/ufbp1t4I=,tag:t66DZ5PqYtu35SdhYikKDg==,type:str]
+    lastmodified: "2025-06-08T21:29:32Z"
+    mac: ENC[AES256_GCM,data:FdiMSSTwARWNU8hSGGlaW72Y4Y4lV8NgQ6acdTZSr+IWCgqevaKbboSlJBE0OLoLrSL9EACGwd5+yAui4qs8M+JLhR7nW5jr4u82M/FRKYUwENEcwK4IzKfp8QLGLsHCuY0D4Fui6RI+r6ai7514OmmJFtR/s3KQLJImF5xNYCM=,iv:ZeK7SDPqsaR+CChaYOB3bFVD24tYtEnzJm0QA6DNQZE=,tag:bKNeP9ypxAu/GpT1QOZpkg==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -217,7 +192,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-08T20:14:37Z"
-    mac: ENC[AES256_GCM,data:SFPeimnFICEeA+nW318PiWjH9XGKjfc02TnqF943Y6+k0lxcvpGZcGZygKmwB4S8g/VU4Gedv6n293c5+nJSXQoPEL0hjIJaJPfnmEiag72CJlNYwbDypoG6sLURYXFMGdSf4SKDnjbRvH6Zv++YJVlMgVvGUCpPzQ+i0jLnlxc=,iv:VkXgsmCOdcx024lSSTlN3TeOy+QtI8B6z+/ufbp1t4I=,tag:t66DZ5PqYtu35SdhYikKDg==,type:str]
+    lastmodified: "2025-06-08T21:29:32Z"
+    mac: ENC[AES256_GCM,data:FdiMSSTwARWNU8hSGGlaW72Y4Y4lV8NgQ6acdTZSr+IWCgqevaKbboSlJBE0OLoLrSL9EACGwd5+yAui4qs8M+JLhR7nW5jr4u82M/FRKYUwENEcwK4IzKfp8QLGLsHCuY0D4Fui6RI+r6ai7514OmmJFtR/s3KQLJImF5xNYCM=,iv:ZeK7SDPqsaR+CChaYOB3bFVD24tYtEnzJm0QA6DNQZE=,tag:bKNeP9ypxAu/GpT1QOZpkg==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
