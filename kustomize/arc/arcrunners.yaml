@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arc-runners
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arc-runners
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: gha-runner-scale-set-controller
+    repoURL: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+    helm:
+      releaseName: arc-runners
+      valuesFile: values-arcrunners.yaml
+      parameters:
+        - name: githubConfigUrl
+          value: https://github.com/makeitworkcloud
+        - name: githubConfigSecret.github_token
+          value: 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
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: arc-runners
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: arc-runners-scc-rb
+  namespace: arc-runners
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:openshift:scc:github-arc
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: ServiceAccount
+  name: arc-runners-gha-rs-no-permission
+  namespace: arc-runners
