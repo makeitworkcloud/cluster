@@ -30,7 +30,7 @@ metadata:
 spec:
     syncPolicy:
         automated:
-            prune: false
+            prune: true
             selfHeal: true
     project: default
     source:
