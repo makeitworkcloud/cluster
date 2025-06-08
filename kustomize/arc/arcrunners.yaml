@@ -20,9 +20,9 @@ spec:
       valueFiles:
         - values-arcrunners.yaml
       parameters:
-        - name: githubConfigUrl
+        - name: "githubConfigUrl"
           value: https://github.com/makeitworkcloud
-        - name: githubConfigSecret.github_token
+        - name: "githubConfigSecret.github_token"
           value: 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
   destination:
     server: "https://kubernetes.default.svc"
