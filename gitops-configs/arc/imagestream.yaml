@@ -10,3 +10,5 @@ spec:
       kind: DockerImage
       name: ghcr.io/makeitworkcloud/terraform-runner
     name: latest
+    importPolicy:
+      scheduled: true
