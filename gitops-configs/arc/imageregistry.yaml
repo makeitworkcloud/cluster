@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ClusterRoleBinding
+metadata:
+  name: anonymous-pull-crb
+roleRef:
+  kind: ClusterRole
+  name: registry-viewer
+subjects:
+- kind: User
+  name: system:unauthenticated
