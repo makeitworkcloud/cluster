@@ -12,3 +12,5 @@ spec:
     name: latest
     importPolicy:
       scheduled: true
+    lookupPolicy:
+      local: true
