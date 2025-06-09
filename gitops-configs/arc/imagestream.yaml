@@ -8,5 +8,5 @@ spec:
   tags:
   - from:
       kind: DockerImage
-      name: ghcr.io/arc-runners/terraform-runner:latest
+      name: ghcr.io/arc-runners/terraform-runner
     name: latest
