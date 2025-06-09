@@ -6,7 +6,7 @@ OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yaml | grep tf_na
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
 DESIRED_CONTEXT := $(shell sops decrypt secrets/secrets.yaml | grep desired_context | cut -d ' ' -f 2)
 
-.PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks argcd-login
+.PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks argocd-login argocd-sync sync clean
 
 help:
 	@echo "General targets"
@@ -88,3 +88,5 @@ argocd-login:
 
 argocd-sync: argocd-login
 	@ argocd app sync gitops-configs
+
+sync: argocd-sync
