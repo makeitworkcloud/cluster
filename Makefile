@@ -84,6 +84,9 @@ pre-commit-install-hooks: .git/hooks/pre-commit
 check-context:
 	@ if [[ "${CONTEXT}" == *"${DESIRED_CONTEXT}"* ]]; then echo "Context check passed"; else echo "Context check failed" && exit 1; fi
 
+argocd-password:
+	@ ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d
+
 argocd-login:
 	@ argocd login --skip-test-tls --insecure --username admin --password "$(shell ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d)" ${ARGOCD_URL}
 
