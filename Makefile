@@ -45,7 +45,7 @@ plan: init .terraform/plan
 	@${TERRAFORM} state show kubernetes_manifest.openshift_gitops_subscription >/dev/null 2>&1 && ${TERRAFORM} plan -compact-warnings -out .terraform/plan || ${TERRAFORM} plan -compact-warnings -out .terraform/plan -target kubernetes_manifest.openshift_gitops_subscription
 
 apply: test plan
-	@${TERRAFORM} state show kubernetes_manifest.openshift_gitops_subscription >/dev/null 2>&1 || ( echo "INITIAL DEPLOYMENT" && ${TERRAFORM} apply -auto-approve -compact-warnings -target kubernetes_manifest.openshift_gitops_subscription .terraform/plan && rm -f .terraform/plan && echo "SLEEPING FOR 30 SECONDS FOR GITOPS DEPLOYMENT" && sleep 30 && oc apply -k kustomize && ${TERRAFORM} plan -compact-warnings -out .terraform/plan )
+	@${TERRAFORM} state show kubernetes_manifest.openshift_gitops_subscription >/dev/null 2>&1 || ( echo "INITIAL DEPLOYMENT" && ${TERRAFORM} apply -auto-approve -compact-warnings -target kubernetes_manifest.openshift_gitops_subscription .terraform/plan && rm -f .terraform/plan && echo "SLEEPING FOR 30 SECONDS FOR GITOPS DEPLOYMENT" && sleep 30 && oc apply -k kustomize && echo "SLEEPING FOR 30 SECONDS FOR GITOPS REDEPLOYMENT" && sleep 30 && ${TERRAFORM} plan -compact-warnings -out .terraform/plan )
 	@${TERRAFORM} apply -auto-approve -compact-warnings .terraform/plan
 	@rm -f .terraform/plan
 
