@@ -20,7 +20,7 @@ metadata:
   name: ansible-automation-platform-operator-tf
   namespace: aap
 spec:
-  channel: stable-2.5
+  channel: stable-2.4
   installPlanApproval: Automatic
   name: ansible-automation-platform-operator
   source: redhat-operators
