@@ -13,6 +13,4 @@ spec:
   replicas: 1
   dockerdWithinRunnerContainer: true
   ephemeral: false
-  template:
-    spec:
-      organization: makeitworkcloud
+  organization: makeitworkcloud
