@@ -15,8 +15,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:33:19Z"
-    mac: ENC[AES256_GCM,data:J9rw+13CWz/2lUxLEHN1zVxudJe8Z3IHKcrgoCzpgClgPD6VU3i/mmbQJ2G0ie/zVqlwlE8y3zD14YFHKVvHS5dSBF+RpvK7EsUK6rmJGJmVYenXCWTr4qR3DpG+KRfXpYMYNpr4d+3r65shGoUnlZrIBCiCJLHF0ma+BGwJttU=,iv:ne9fqaveD1opyltQXdhFLaYCatfZjugqT1GBvzE0RMU=,tag:fn4fwf1lqTo6ewLjluW03w==,type:str]
+    lastmodified: "2025-06-26T05:37:31Z"
+    mac: ENC[AES256_GCM,data:cPfpVMH7PfSajqMHE1cCf01qjBn23iQM2fUDzepfu99Nezsfx0hBPH1ycwRZvJbM2nJR/kDDmuvhDfmdnNqGCtuBWwDPRpSIDWB87vNmUkKZzMMBF8uDEM9do4HgkMpMuMpnmTykj6Mlyy12tM/usWZrREuw8jTMEZ4t3Y1yYAE=,iv:JlamqQV0Hv93gOWkeOg3durBsO9itmjQVIhv0s3s1bw=,tag:dHa1O7meG3nJnZBp3lZlaQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -62,15 +62,15 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:33:19Z"
-    mac: ENC[AES256_GCM,data:J9rw+13CWz/2lUxLEHN1zVxudJe8Z3IHKcrgoCzpgClgPD6VU3i/mmbQJ2G0ie/zVqlwlE8y3zD14YFHKVvHS5dSBF+RpvK7EsUK6rmJGJmVYenXCWTr4qR3DpG+KRfXpYMYNpr4d+3r65shGoUnlZrIBCiCJLHF0ma+BGwJttU=,iv:ne9fqaveD1opyltQXdhFLaYCatfZjugqT1GBvzE0RMU=,tag:fn4fwf1lqTo6ewLjluW03w==,type:str]
+    lastmodified: "2025-06-26T05:37:31Z"
+    mac: ENC[AES256_GCM,data:cPfpVMH7PfSajqMHE1cCf01qjBn23iQM2fUDzepfu99Nezsfx0hBPH1ycwRZvJbM2nJR/kDDmuvhDfmdnNqGCtuBWwDPRpSIDWB87vNmUkKZzMMBF8uDEM9do4HgkMpMuMpnmTykj6Mlyy12tM/usWZrREuw8jTMEZ4t3Y1yYAE=,iv:JlamqQV0Hv93gOWkeOg3durBsO9itmjQVIhv0s3s1bw=,tag:dHa1O7meG3nJnZBp3lZlaQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-    name: arc-dind-systems-scc-rb
+    name: arc-dind-systems-privileged-scc-rb
     namespace: arc-dind-systems
     annotations:
         kustomize.config.k8s.io/behavior: merge
@@ -80,7 +80,7 @@ roleRef:
     name: system:openshift:scc:privileged
 subjects:
     - kind: ServiceAccount
-      name: arc-dind-actions-runner-controller
+      name: default
       namespace: arc-dind-systems
 sops:
     age:
@@ -93,7 +93,38 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:33:19Z"
-    mac: ENC[AES256_GCM,data:J9rw+13CWz/2lUxLEHN1zVxudJe8Z3IHKcrgoCzpgClgPD6VU3i/mmbQJ2G0ie/zVqlwlE8y3zD14YFHKVvHS5dSBF+RpvK7EsUK6rmJGJmVYenXCWTr4qR3DpG+KRfXpYMYNpr4d+3r65shGoUnlZrIBCiCJLHF0ma+BGwJttU=,iv:ne9fqaveD1opyltQXdhFLaYCatfZjugqT1GBvzE0RMU=,tag:fn4fwf1lqTo6ewLjluW03w==,type:str]
+    lastmodified: "2025-06-26T05:37:31Z"
+    mac: ENC[AES256_GCM,data:cPfpVMH7PfSajqMHE1cCf01qjBn23iQM2fUDzepfu99Nezsfx0hBPH1ycwRZvJbM2nJR/kDDmuvhDfmdnNqGCtuBWwDPRpSIDWB87vNmUkKZzMMBF8uDEM9do4HgkMpMuMpnmTykj6Mlyy12tM/usWZrREuw8jTMEZ4t3Y1yYAE=,iv:JlamqQV0Hv93gOWkeOg3durBsO9itmjQVIhv0s3s1bw=,tag:dHa1O7meG3nJnZBp3lZlaQ==,type:str]
+    encrypted_regex: ^(github_token)$
+    version: 3.10.2
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: arc-dind-systems-anyuid-scc-rb
+    namespace: arc-dind-systems
+    annotations:
+        kustomize.config.k8s.io/behavior: merge
+roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:openshift:scc:anyuid
+subjects:
+    - kind: ServiceAccount
+      name: default
+      namespace: arc-dind-systems
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOSkxiUjNPcVkvaVY4NEV4
+            Ulh4UmJJNnFlZ1kvZGtqVHhSWHdjSWJuVGxnClZzcWFTVEJGOFpsL1hVcnVyd1B2
+            NzVRUDZBU0tXeHBFdEFKZ25ic0k2RGsKLS0tIDJQZXphSC9KcitGK3MwSUJ1Ylds
+            T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
+            HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-26T05:37:31Z"
+    mac: ENC[AES256_GCM,data:cPfpVMH7PfSajqMHE1cCf01qjBn23iQM2fUDzepfu99Nezsfx0hBPH1ycwRZvJbM2nJR/kDDmuvhDfmdnNqGCtuBWwDPRpSIDWB87vNmUkKZzMMBF8uDEM9do4HgkMpMuMpnmTykj6Mlyy12tM/usWZrREuw8jTMEZ4t3Y1yYAE=,iv:JlamqQV0Hv93gOWkeOg3durBsO9itmjQVIhv0s3s1bw=,tag:dHa1O7meG3nJnZBp3lZlaQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
