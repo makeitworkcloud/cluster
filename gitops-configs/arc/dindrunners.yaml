@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arc-dind-runners
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: arc-dind
+  namespace: arc-dind-runners
+spec:
+  replicas: 1
+  ephemeral: false
+  template:
+    spec:
+      repository: mumoshu/actions-runner-controller-ci

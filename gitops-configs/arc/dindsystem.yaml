@@ -15,8 +15,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:02:51Z"
-    mac: ENC[AES256_GCM,data:MMRxkeS8mAaJEQlgjPxWGYqnodw18qPfIKWkoSL51vlUMh8PiCfqJ/DiTMLURjSEH91SETAVmarW6mSoOtP9MHp1JF1sEt5+dI6Uqlg6rOUc5MV4qLpZxLlwVi7cxCOdjG7e7NpCGK6ONVbKzX37990m/2p268zOEwuK3tnJ6mQ=,iv:2ru37N07r8WunE2go3ibtwdbma4+zKGjBDcSvV7X7Fs=,tag:AVZxFN1VpXULu1nPsdqpkg==,type:str]
+    lastmodified: "2025-06-26T05:17:43Z"
+    mac: ENC[AES256_GCM,data:DgRINpsXexLbZTrjbKIwWRRyf45VMB8eJLhygsN6Whw60JpJ+Fd6jV2iwx87eVaIjXHjQrjc3lsEfogaIpxWFVdZaCIIGAcMf/ivdFqYOB5v9IsAbNgmwKiAA+LJS5V0TRCn9tlupEDH8iavwBSMKdxpjFprE5oiyQQtzqJKGNg=,iv:t7kppJmC8hXDH7uTeuWTWi5aZE70PgxZLhc704Sxi3A=,tag:QoqvByGPSLWFcCCvuFb0Dg==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -44,6 +44,9 @@ spec:
             valuesObject:
                 authSecret:
                     github_token: ENC[AES256_GCM,data:SIyjPbMN3EaWoJKL2E6uomo5QMx0mQa2dhUYYXhdkjADrylRemtN3w==,iv:dsff2qtJXDdX/PEgXi0zdZiU9u9Q6n7QR5Vl5n2LDYI=,tag:xHvHdEuw6rTaSkqGDC0rpQ==,type:str]
+                scope:
+                    singleNamespace: true
+                    watchNamespace: arc-dind-runners
     destination:
         server: https://kubernetes.default.svc
         namespace: arc-dind-systems
@@ -58,7 +61,7 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:02:51Z"
-    mac: ENC[AES256_GCM,data:MMRxkeS8mAaJEQlgjPxWGYqnodw18qPfIKWkoSL51vlUMh8PiCfqJ/DiTMLURjSEH91SETAVmarW6mSoOtP9MHp1JF1sEt5+dI6Uqlg6rOUc5MV4qLpZxLlwVi7cxCOdjG7e7NpCGK6ONVbKzX37990m/2p268zOEwuK3tnJ6mQ=,iv:2ru37N07r8WunE2go3ibtwdbma4+zKGjBDcSvV7X7Fs=,tag:AVZxFN1VpXULu1nPsdqpkg==,type:str]
+    lastmodified: "2025-06-26T05:17:43Z"
+    mac: ENC[AES256_GCM,data:DgRINpsXexLbZTrjbKIwWRRyf45VMB8eJLhygsN6Whw60JpJ+Fd6jV2iwx87eVaIjXHjQrjc3lsEfogaIpxWFVdZaCIIGAcMf/ivdFqYOB5v9IsAbNgmwKiAA+LJS5V0TRCn9tlupEDH8iavwBSMKdxpjFprE5oiyQQtzqJKGNg=,iv:t7kppJmC8hXDH7uTeuWTWi5aZE70PgxZLhc704Sxi3A=,tag:QoqvByGPSLWFcCCvuFb0Dg==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
