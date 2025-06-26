@@ -23,6 +23,7 @@ spec:
   replicas: 1
   template:
     spec:
+      image: summerwind/actions-runner-dind
       ephemeral: false
       dockerdWithinRunnerContainer: true
       organization: makeitworkcloud
