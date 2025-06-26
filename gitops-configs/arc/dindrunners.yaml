@@ -5,7 +5,7 @@ metadata:
   name: arc-dind-runners
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
-kind: RunnerDeployment
+kind: RunnerSet
 metadata:
   name: arc-dind
   namespace: arc-dind-runners
