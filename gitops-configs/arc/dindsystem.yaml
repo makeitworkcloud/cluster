@@ -15,8 +15,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:52:21Z"
-    mac: ENC[AES256_GCM,data:kmMvWiq2ZDlrPFnoaNjEbtjsnlehCd3pELPnDuqszfcjA5lytEk3i1WC6lSB2pVPnnteiDKoCujHYZm63mJYTxL7197DXHccrkEynZ33ElRhXhP5VMc+m+VVD326hBN9vT7k0J40WBrdpHJFxOzCTgpSMPWJoVdCeUMU8bxpZ4I=,iv:yHM7q9RrCKhCJIDUH/cQ4YlfhuNSZkDCDzYM+WLfws8=,tag:1OxQdkYIJQcEnlvDaZClIQ==,type:str]
+    lastmodified: "2025-06-26T06:11:00Z"
+    mac: ENC[AES256_GCM,data:4FX+qUEE404LDlIO47PsL4kFlGSuDsXkQnJXlr3Cxw+Yj9AeApH1NyNWiQ4ozLXM6XY8LCeTqaK7r8bLrhRvTvIrVt2kBem2V7kFaTczDkspYEIchu2mPSPMaCrEXP1raBE64mNvf2sP5djb2fpXtAFFvxzAa5qomkMnzSEacgc=,iv:pZZrIl6Gg2ldWOCOcHI8lVLknUkLYFtufCLwfL9uXr4=,tag:ZeRZu+yu7j4StlsEpetLsQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -38,7 +38,7 @@ spec:
     source:
         chart: actions-runner-controller
         repoURL: https://actions-runner-controller.github.io/actions-runner-controller
-        targetRevision: 0.22.0
+        targetRevision: 0.23.7
         helm:
             releaseName: arc-dind
             valuesObject:
@@ -62,8 +62,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:52:21Z"
-    mac: ENC[AES256_GCM,data:kmMvWiq2ZDlrPFnoaNjEbtjsnlehCd3pELPnDuqszfcjA5lytEk3i1WC6lSB2pVPnnteiDKoCujHYZm63mJYTxL7197DXHccrkEynZ33ElRhXhP5VMc+m+VVD326hBN9vT7k0J40WBrdpHJFxOzCTgpSMPWJoVdCeUMU8bxpZ4I=,iv:yHM7q9RrCKhCJIDUH/cQ4YlfhuNSZkDCDzYM+WLfws8=,tag:1OxQdkYIJQcEnlvDaZClIQ==,type:str]
+    lastmodified: "2025-06-26T06:11:00Z"
+    mac: ENC[AES256_GCM,data:4FX+qUEE404LDlIO47PsL4kFlGSuDsXkQnJXlr3Cxw+Yj9AeApH1NyNWiQ4ozLXM6XY8LCeTqaK7r8bLrhRvTvIrVt2kBem2V7kFaTczDkspYEIchu2mPSPMaCrEXP1raBE64mNvf2sP5djb2fpXtAFFvxzAa5qomkMnzSEacgc=,iv:pZZrIl6Gg2ldWOCOcHI8lVLknUkLYFtufCLwfL9uXr4=,tag:ZeRZu+yu7j4StlsEpetLsQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -93,8 +93,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:52:21Z"
-    mac: ENC[AES256_GCM,data:kmMvWiq2ZDlrPFnoaNjEbtjsnlehCd3pELPnDuqszfcjA5lytEk3i1WC6lSB2pVPnnteiDKoCujHYZm63mJYTxL7197DXHccrkEynZ33ElRhXhP5VMc+m+VVD326hBN9vT7k0J40WBrdpHJFxOzCTgpSMPWJoVdCeUMU8bxpZ4I=,iv:yHM7q9RrCKhCJIDUH/cQ4YlfhuNSZkDCDzYM+WLfws8=,tag:1OxQdkYIJQcEnlvDaZClIQ==,type:str]
+    lastmodified: "2025-06-26T06:11:00Z"
+    mac: ENC[AES256_GCM,data:4FX+qUEE404LDlIO47PsL4kFlGSuDsXkQnJXlr3Cxw+Yj9AeApH1NyNWiQ4ozLXM6XY8LCeTqaK7r8bLrhRvTvIrVt2kBem2V7kFaTczDkspYEIchu2mPSPMaCrEXP1raBE64mNvf2sP5djb2fpXtAFFvxzAa5qomkMnzSEacgc=,iv:pZZrIl6Gg2ldWOCOcHI8lVLknUkLYFtufCLwfL9uXr4=,tag:ZeRZu+yu7j4StlsEpetLsQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -124,7 +124,7 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:52:21Z"
-    mac: ENC[AES256_GCM,data:kmMvWiq2ZDlrPFnoaNjEbtjsnlehCd3pELPnDuqszfcjA5lytEk3i1WC6lSB2pVPnnteiDKoCujHYZm63mJYTxL7197DXHccrkEynZ33ElRhXhP5VMc+m+VVD326hBN9vT7k0J40WBrdpHJFxOzCTgpSMPWJoVdCeUMU8bxpZ4I=,iv:yHM7q9RrCKhCJIDUH/cQ4YlfhuNSZkDCDzYM+WLfws8=,tag:1OxQdkYIJQcEnlvDaZClIQ==,type:str]
+    lastmodified: "2025-06-26T06:11:00Z"
+    mac: ENC[AES256_GCM,data:4FX+qUEE404LDlIO47PsL4kFlGSuDsXkQnJXlr3Cxw+Yj9AeApH1NyNWiQ4ozLXM6XY8LCeTqaK7r8bLrhRvTvIrVt2kBem2V7kFaTczDkspYEIchu2mPSPMaCrEXP1raBE64mNvf2sP5djb2fpXtAFFvxzAa5qomkMnzSEacgc=,iv:pZZrIl6Gg2ldWOCOcHI8lVLknUkLYFtufCLwfL9uXr4=,tag:ZeRZu+yu7j4StlsEpetLsQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
