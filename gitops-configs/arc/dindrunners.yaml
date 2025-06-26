@@ -13,8 +13,8 @@ spec:
   replicas: 1
   dockerdWithinRunnerContainer: true
   ephemeral: false
-  labels:
-    - arc-dind
   template:
     spec:
       organization: makeitworkcloud
+      labels:
+        - arc-dind
