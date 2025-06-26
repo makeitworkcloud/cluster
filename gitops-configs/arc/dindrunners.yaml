@@ -14,3 +14,9 @@ spec:
   dockerdWithinRunnerContainer: true
   ephemeral: false
   organization: makeitworkcloud
+  selector: arc-dind
+  serviceName: arc-dind
+  template:
+    metadata:
+      labels:
+        app: arc-dind
