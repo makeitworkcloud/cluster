@@ -21,9 +21,9 @@ metadata:
   namespace: arc-dind-runners
 spec:
   replicas: 1
-  ephemeral: false
   template:
     spec:
+      ephemeral: false
       dockerdWithinRunnerContainer: true
       organization: makeitworkcloud
       labels:
