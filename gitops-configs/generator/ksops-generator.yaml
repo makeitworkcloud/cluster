@@ -8,4 +8,5 @@ metadata:
           path: ksops
 files:
   - arc/arcrunners.yaml
+  - arc/dindsystem.yaml
   - ansible/certs.yaml
