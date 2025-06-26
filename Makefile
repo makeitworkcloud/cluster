@@ -55,25 +55,15 @@ test: check-context .git/hooks/pre-commit
 DEPS_PRE_COMMIT=$(shell which pre-commit || echo "pre-commit not found")
 DEPS_TERRAFORM_DOCS=$(shell which terraform-docs || echo "terraform-docs not found")
 DEPS_TFLINT=$(shell which tflint || echo "tflint not found,")
-DEPS_TFSEC=$(shell which tfsec || echo "tfsec not found,")
 DEPS_CHECKOV=$(shell which checkov || echo "checkov not found,")
-DEPS_INFRACOST=$(shell which infracost || echo "infracost not found,")
-DEPS_TFUPDATE=$(shell which tfupdate || echo "tfupdate not found,")
-DEPS_HCLEDIT=$(shell which hcledit || echo "hcledit not found,")
 DEPS_JQ=$(shell which jq || echo "jq not found,")
-DEPS_YQ=$(shell which yq || echo "yq not found,")
 pre-commit-check-deps:
 	@echo "Checking for pre-commit and its dependencies:"
 	@echo "  pre-commit: ${DEPS_PRE_COMMIT}"
 	@echo "  terraform-docs: ${DEPS_TERRAFORM_DOCS}"
 	@echo "  tflint: ${DEPS_TFLINT}"
-	@echo "  tfsec: ${DEPS_TFSEC}"
 	@echo "  checkov: ${DEPS_CHECKOV}"
-	@echo "  infracost: ${DEPS_INFRACOST}"
-	@echo "  tfupdate: ${DEPS_TFUPDATE}"
-	@echo "  hcledit: ${DEPS_HCLEDIT}"
 	@echo "  jq: ${DEPS_JQ}"
-	@echo "  yq: ${DEPS_YQ}"
 	@echo ""
 
 pre-commit-install-hooks: .git/hooks/pre-commit

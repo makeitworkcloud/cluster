@@ -23,11 +23,6 @@ repos:
       args:
         - --args=--minimum-failure-severity=error
         - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-    - id: terraform_tfsec
-      args:
-        - --args=--config-file=__GIT_WORKING_DIR__/.tfsec.yml
-        - --args=--tfvars-file=__GIT_WORKING_DIR__/terraform.tfvars
-        - --args=--soft-fail
     - id: terraform_checkov
       args:
         - --args=--config-file __GIT_WORKING_DIR__/.checkov.yml
