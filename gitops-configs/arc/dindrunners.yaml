@@ -33,6 +33,8 @@ spec:
         - mountPath: /etc/docker/daemon.json
           name: daemon-config-volume
           subPath: daemon.json
+        - mountPath: /var/lib/docker
+          name: var-lib-docker
       volumes:
         - name: daemon-config-volume
           configMap:
@@ -40,3 +42,12 @@ spec:
             items:
               - key: daemon.json
                 path: daemon.json
+        - name: var-lib-docker
+          ephemeral:
+            volumeClaimTemplate:
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 50Gi
