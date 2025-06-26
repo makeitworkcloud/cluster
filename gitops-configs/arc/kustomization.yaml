@@ -5,4 +5,5 @@ resources:
 - imageregistry.yaml
 - imagestream.yaml
 - arcsystem.yaml
+- dindsystem.yaml
 - arcrunners.yaml
