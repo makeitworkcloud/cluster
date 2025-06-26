@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: arc-dind-systems
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOSkxiUjNPcVkvaVY4NEV4
+            Ulh4UmJJNnFlZ1kvZGtqVHhSWHdjSWJuVGxnClZzcWFTVEJGOFpsL1hVcnVyd1B2
+            NzVRUDZBU0tXeHBFdEFKZ25ic0k2RGsKLS0tIDJQZXphSC9KcitGK3MwSUJ1Ylds
+            T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
+            HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-26T04:48:50Z"
+    mac: ENC[AES256_GCM,data:T3uRc2/ios4yn0+xcUmmJk5tzY5ZAaWXD00c555Si9VmQ85NAh2vT1AZE0kLdVP0qWoh4j9ttXoYXjqnd3RIYnh52zZIFVxybW91aiyFJYBCogb8r2Tj3JZ8LGT4vO29PefiEiI0tGy7Eg7PBBrnUgX5GOV3mSn2WEmOmnwvLlc=,iv:XzE36JpXiUYwQ+iTzY97RC9GSTCdJTUbE/2aAyz9Vp4=,tag:wHHJ1vs+6IvkPIc+he9QVg==,type:str]
+    encrypted_regex: ^(github_token)$
+    version: 3.10.2
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: arc
+    namespace: openshift-gitops
+spec:
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+        syncOptions:
+            - ServerSideApply=true
+    project: default
+    source:
+        chart: actions-runner-controller
+        repoURL: actions-runner-controller.github.io/actions-runner-controller
+        targetRevision: 0.22.0
+        helm:
+            releaseName: arc-dind
+            valuesObject:
+                authSecret:
+                    github_token: ENC[AES256_GCM,data:SIyjPbMN3EaWoJKL2E6uomo5QMx0mQa2dhUYYXhdkjADrylRemtN3w==,iv:dsff2qtJXDdX/PEgXi0zdZiU9u9Q6n7QR5Vl5n2LDYI=,tag:xHvHdEuw6rTaSkqGDC0rpQ==,type:str]
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: arc-dind-systems
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOSkxiUjNPcVkvaVY4NEV4
+            Ulh4UmJJNnFlZ1kvZGtqVHhSWHdjSWJuVGxnClZzcWFTVEJGOFpsL1hVcnVyd1B2
+            NzVRUDZBU0tXeHBFdEFKZ25ic0k2RGsKLS0tIDJQZXphSC9KcitGK3MwSUJ1Ylds
+            T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
+            HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-26T04:48:50Z"
+    mac: ENC[AES256_GCM,data:T3uRc2/ios4yn0+xcUmmJk5tzY5ZAaWXD00c555Si9VmQ85NAh2vT1AZE0kLdVP0qWoh4j9ttXoYXjqnd3RIYnh52zZIFVxybW91aiyFJYBCogb8r2Tj3JZ8LGT4vO29PefiEiI0tGy7Eg7PBBrnUgX5GOV3mSn2WEmOmnwvLlc=,iv:XzE36JpXiUYwQ+iTzY97RC9GSTCdJTUbE/2aAyz9Vp4=,tag:wHHJ1vs+6IvkPIc+he9QVg==,type:str]
+    encrypted_regex: ^(github_token)$
+    version: 3.10.2
