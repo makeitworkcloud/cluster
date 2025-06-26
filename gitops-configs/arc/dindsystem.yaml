@@ -15,8 +15,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:01:01Z"
-    mac: ENC[AES256_GCM,data:lkxHu02PvtanGSWbp/i+KN095YVIK2ECQGAwMq8PFmLimnrxG5CKP2eTzulbAllEovOrJg09zVaU75CkZdL2KZebJouOJAX06rNwmcr2X7lQ9mmkH/nSg2NcNFt/svoXrgAhX88dmf46up3/NUZitSpmuGXQUGVTpUmctcrRy3Q=,iv:8Col2GH6E1bay2c+YNVQlMty3FlrfoS0e2A9FHtFZ58=,tag:3v+47S1C9X8s13OCUWEidg==,type:str]
+    lastmodified: "2025-06-26T05:02:51Z"
+    mac: ENC[AES256_GCM,data:MMRxkeS8mAaJEQlgjPxWGYqnodw18qPfIKWkoSL51vlUMh8PiCfqJ/DiTMLURjSEH91SETAVmarW6mSoOtP9MHp1JF1sEt5+dI6Uqlg6rOUc5MV4qLpZxLlwVi7cxCOdjG7e7NpCGK6ONVbKzX37990m/2p268zOEwuK3tnJ6mQ=,iv:2ru37N07r8WunE2go3ibtwdbma4+zKGjBDcSvV7X7Fs=,tag:AVZxFN1VpXULu1nPsdqpkg==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -37,7 +37,7 @@ spec:
     project: default
     source:
         chart: actions-runner-controller
-        repoURL: actions-runner-controller.github.io/actions-runner-controller
+        repoURL: https://actions-runner-controller.github.io/actions-runner-controller
         targetRevision: 0.22.0
         helm:
             releaseName: arc-dind
@@ -58,7 +58,7 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:01:01Z"
-    mac: ENC[AES256_GCM,data:lkxHu02PvtanGSWbp/i+KN095YVIK2ECQGAwMq8PFmLimnrxG5CKP2eTzulbAllEovOrJg09zVaU75CkZdL2KZebJouOJAX06rNwmcr2X7lQ9mmkH/nSg2NcNFt/svoXrgAhX88dmf46up3/NUZitSpmuGXQUGVTpUmctcrRy3Q=,iv:8Col2GH6E1bay2c+YNVQlMty3FlrfoS0e2A9FHtFZ58=,tag:3v+47S1C9X8s13OCUWEidg==,type:str]
+    lastmodified: "2025-06-26T05:02:51Z"
+    mac: ENC[AES256_GCM,data:MMRxkeS8mAaJEQlgjPxWGYqnodw18qPfIKWkoSL51vlUMh8PiCfqJ/DiTMLURjSEH91SETAVmarW6mSoOtP9MHp1JF1sEt5+dI6Uqlg6rOUc5MV4qLpZxLlwVi7cxCOdjG7e7NpCGK6ONVbKzX37990m/2p268zOEwuK3tnJ6mQ=,iv:2ru37N07r8WunE2go3ibtwdbma4+zKGjBDcSvV7X7Fs=,tag:AVZxFN1VpXULu1nPsdqpkg==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
