@@ -12,7 +12,6 @@ metadata:
 spec:
   replicas: 1
   ephemeral: false
-  organization: makeitworkcloud
   template:
     spec:
-      repository: mumoshu/actions-runner-controller-ci
+      organization: makeitworkcloud
