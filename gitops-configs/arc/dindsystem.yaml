@@ -13,15 +13,15 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T04:48:50Z"
-    mac: ENC[AES256_GCM,data:T3uRc2/ios4yn0+xcUmmJk5tzY5ZAaWXD00c555Si9VmQ85NAh2vT1AZE0kLdVP0qWoh4j9ttXoYXjqnd3RIYnh52zZIFVxybW91aiyFJYBCogb8r2Tj3JZ8LGT4vO29PefiEiI0tGy7Eg7PBBrnUgX5GOV3mSn2WEmOmnwvLlc=,iv:XzE36JpXiUYwQ+iTzY97RC9GSTCdJTUbE/2aAyz9Vp4=,tag:wHHJ1vs+6IvkPIc+he9QVg==,type:str]
+    lastmodified: "2025-06-26T04:59:16Z"
+    mac: ENC[AES256_GCM,data:DOIABAlJOhzDNZ8YAWZdjKLVTFKSdo43y6V5SlAyRkVpFEq/bYw3O6fLAp9kVZ+uzYmpBx+LOZOCVISOmd/q/dYfkyaLwVcZhroik+xaJklUcnnf/ndjaV4lMQjNZYpn70iHcPKtXOOlgzmtlmLX8GnpKghcQVSQewKtH5Nuays=,iv:So/UUTh3iJzNG0R4Iply/8lTLhD5qaBxUNPWBLVGpNI=,tag:hysuTm0AJZ8cdFcUCKQpjQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: arc
+    name: arc-dind
     namespace: openshift-gitops
 spec:
     syncPolicy:
@@ -54,7 +54,7 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T04:48:50Z"
-    mac: ENC[AES256_GCM,data:T3uRc2/ios4yn0+xcUmmJk5tzY5ZAaWXD00c555Si9VmQ85NAh2vT1AZE0kLdVP0qWoh4j9ttXoYXjqnd3RIYnh52zZIFVxybW91aiyFJYBCogb8r2Tj3JZ8LGT4vO29PefiEiI0tGy7Eg7PBBrnUgX5GOV3mSn2WEmOmnwvLlc=,iv:XzE36JpXiUYwQ+iTzY97RC9GSTCdJTUbE/2aAyz9Vp4=,tag:wHHJ1vs+6IvkPIc+he9QVg==,type:str]
+    lastmodified: "2025-06-26T04:59:16Z"
+    mac: ENC[AES256_GCM,data:DOIABAlJOhzDNZ8YAWZdjKLVTFKSdo43y6V5SlAyRkVpFEq/bYw3O6fLAp9kVZ+uzYmpBx+LOZOCVISOmd/q/dYfkyaLwVcZhroik+xaJklUcnnf/ndjaV4lMQjNZYpn70iHcPKtXOOlgzmtlmLX8GnpKghcQVSQewKtH5Nuays=,iv:So/UUTh3iJzNG0R4Iply/8lTLhD5qaBxUNPWBLVGpNI=,tag:hysuTm0AJZ8cdFcUCKQpjQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
