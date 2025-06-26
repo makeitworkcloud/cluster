@@ -15,8 +15,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:37:31Z"
-    mac: ENC[AES256_GCM,data:cPfpVMH7PfSajqMHE1cCf01qjBn23iQM2fUDzepfu99Nezsfx0hBPH1ycwRZvJbM2nJR/kDDmuvhDfmdnNqGCtuBWwDPRpSIDWB87vNmUkKZzMMBF8uDEM9do4HgkMpMuMpnmTykj6Mlyy12tM/usWZrREuw8jTMEZ4t3Y1yYAE=,iv:JlamqQV0Hv93gOWkeOg3durBsO9itmjQVIhv0s3s1bw=,tag:dHa1O7meG3nJnZBp3lZlaQ==,type:str]
+    lastmodified: "2025-06-26T05:43:32Z"
+    mac: ENC[AES256_GCM,data:UEdp2PMWdmx8M3T/YslZZixnxvtUPpb0D/CdczgKC2tn2JxI1ac/JXCXsM0S/WbB8lWTAsNi88/yEKK26LtDiVTRUv+HNKBtJeWx/gQxS6350GziqzuT/EV/T4+P4ifnzXsm49ssEF53yYjZsYRTk/jep3ivI5pDy13aSJa0jzs=,iv:aBcP3Vk8CrU/HJIBufjK+HCvhy1SHv7vMcUHgvAQfm0=,tag:t8cuxSjmm9Q793el4S4bcQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -62,8 +62,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:37:31Z"
-    mac: ENC[AES256_GCM,data:cPfpVMH7PfSajqMHE1cCf01qjBn23iQM2fUDzepfu99Nezsfx0hBPH1ycwRZvJbM2nJR/kDDmuvhDfmdnNqGCtuBWwDPRpSIDWB87vNmUkKZzMMBF8uDEM9do4HgkMpMuMpnmTykj6Mlyy12tM/usWZrREuw8jTMEZ4t3Y1yYAE=,iv:JlamqQV0Hv93gOWkeOg3durBsO9itmjQVIhv0s3s1bw=,tag:dHa1O7meG3nJnZBp3lZlaQ==,type:str]
+    lastmodified: "2025-06-26T05:43:32Z"
+    mac: ENC[AES256_GCM,data:UEdp2PMWdmx8M3T/YslZZixnxvtUPpb0D/CdczgKC2tn2JxI1ac/JXCXsM0S/WbB8lWTAsNi88/yEKK26LtDiVTRUv+HNKBtJeWx/gQxS6350GziqzuT/EV/T4+P4ifnzXsm49ssEF53yYjZsYRTk/jep3ivI5pDy13aSJa0jzs=,iv:aBcP3Vk8CrU/HJIBufjK+HCvhy1SHv7vMcUHgvAQfm0=,tag:t8cuxSjmm9Q793el4S4bcQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -80,7 +80,7 @@ roleRef:
     name: system:openshift:scc:privileged
 subjects:
     - kind: ServiceAccount
-      name: default
+      name: arc-dind-actions-runner-controller
       namespace: arc-dind-systems
 sops:
     age:
@@ -93,8 +93,8 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:37:31Z"
-    mac: ENC[AES256_GCM,data:cPfpVMH7PfSajqMHE1cCf01qjBn23iQM2fUDzepfu99Nezsfx0hBPH1ycwRZvJbM2nJR/kDDmuvhDfmdnNqGCtuBWwDPRpSIDWB87vNmUkKZzMMBF8uDEM9do4HgkMpMuMpnmTykj6Mlyy12tM/usWZrREuw8jTMEZ4t3Y1yYAE=,iv:JlamqQV0Hv93gOWkeOg3durBsO9itmjQVIhv0s3s1bw=,tag:dHa1O7meG3nJnZBp3lZlaQ==,type:str]
+    lastmodified: "2025-06-26T05:43:32Z"
+    mac: ENC[AES256_GCM,data:UEdp2PMWdmx8M3T/YslZZixnxvtUPpb0D/CdczgKC2tn2JxI1ac/JXCXsM0S/WbB8lWTAsNi88/yEKK26LtDiVTRUv+HNKBtJeWx/gQxS6350GziqzuT/EV/T4+P4ifnzXsm49ssEF53yYjZsYRTk/jep3ivI5pDy13aSJa0jzs=,iv:aBcP3Vk8CrU/HJIBufjK+HCvhy1SHv7vMcUHgvAQfm0=,tag:t8cuxSjmm9Q793el4S4bcQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -111,7 +111,7 @@ roleRef:
     name: system:openshift:scc:anyuid
 subjects:
     - kind: ServiceAccount
-      name: default
+      name: arc-dind-actions-runner-controller
       namespace: arc-dind-systems
 sops:
     age:
@@ -124,7 +124,7 @@ sops:
             T3dha3hXTEE3Q2xLRGxEZFFCdnREU2sK2gqg8WPDdCPEbFaxDwMjteIT51vRI9JJ
             HxvKEEmNasazh+vSecF7W+lJfSeLEisdtqfchPT8XPy7avDlHp0MPw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-06-26T05:37:31Z"
-    mac: ENC[AES256_GCM,data:cPfpVMH7PfSajqMHE1cCf01qjBn23iQM2fUDzepfu99Nezsfx0hBPH1ycwRZvJbM2nJR/kDDmuvhDfmdnNqGCtuBWwDPRpSIDWB87vNmUkKZzMMBF8uDEM9do4HgkMpMuMpnmTykj6Mlyy12tM/usWZrREuw8jTMEZ4t3Y1yYAE=,iv:JlamqQV0Hv93gOWkeOg3durBsO9itmjQVIhv0s3s1bw=,tag:dHa1O7meG3nJnZBp3lZlaQ==,type:str]
+    lastmodified: "2025-06-26T05:43:32Z"
+    mac: ENC[AES256_GCM,data:UEdp2PMWdmx8M3T/YslZZixnxvtUPpb0D/CdczgKC2tn2JxI1ac/JXCXsM0S/WbB8lWTAsNi88/yEKK26LtDiVTRUv+HNKBtJeWx/gQxS6350GziqzuT/EV/T4+P4ifnzXsm49ssEF53yYjZsYRTk/jep3ivI5pDy13aSJa0jzs=,iv:aBcP3Vk8CrU/HJIBufjK+HCvhy1SHv7vMcUHgvAQfm0=,tag:t8cuxSjmm9Q793el4S4bcQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
