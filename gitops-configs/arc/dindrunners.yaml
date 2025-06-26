@@ -30,7 +30,7 @@ spec:
       labels:
         - arc-dind
       volumeMounts:
-        - mountPath: /home/runner/.config/docker/daemon.json
+        - mountPath: /etc/docker/daemon.json
           name: daemon-config-volume
           subPath: daemon.json
       volumes:
