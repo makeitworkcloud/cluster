@@ -11,6 +11,7 @@ metadata:
   namespace: arc-dind-runners
 spec:
   replicas: 1
+  dockerdWithinRunnerContainer: true
   ephemeral: false
   template:
     spec:
