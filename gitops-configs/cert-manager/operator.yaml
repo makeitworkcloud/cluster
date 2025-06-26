@@ -20,6 +20,6 @@ metadata:
 spec:
   channel: stable-v1
   installPlanApproval: Automatic
-  name: cert-manager
+  name: openshift-cert-manager-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
