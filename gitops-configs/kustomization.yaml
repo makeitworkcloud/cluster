@@ -5,7 +5,6 @@ resources:
 - ansible
 - cert-manager
 - external-dns
-- devspaces
 - arc
 generators:
 - generator/ksops-generator.yaml
