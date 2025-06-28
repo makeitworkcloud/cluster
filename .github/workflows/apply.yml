@@ -1,0 +1,37 @@
+---
+name: Apply - Terraform via ARC
+on:
+  push:
+    branches:
+      - main
+
+env:
+  SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container: ghcr.io/makeitworkcloud/terraform-runner:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Disabling git safe directories, running as root
+        run: git config --global --add safe.directory '*'
+
+      - uses: Boostport/setup-cloudflare-warp@v1
+        with:
+          organization: makeitworkcloud
+          auth_client_id: ${{ secrets.CLOUDFLARE_AUTH_CLIENT_ID }}
+          auth_client_secret: ${{ secrets.CLOUDFLARE_AUTH_CLIENT_SECRET }}
+
+      - name: Login to OpenShift
+        uses: redhat-actions/oc-login@v1
+        with:
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
+          openshift_username: ${{ secrets.OPENSHIFT_USERNAME }}
+          openshift_password: ${{ secrets.OPENSHIFT_PASSWORD }}
+          insecure_skip_tls_verify: true
+
+      - name: Terraform apply
+        run: make apply
