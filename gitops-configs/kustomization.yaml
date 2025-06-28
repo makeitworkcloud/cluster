@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - ansible
 - cert-manager
+- external-dns
 - devspaces
 - arc
 generators:
