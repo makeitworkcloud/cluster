@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: /home/ubuntu
+
 env:
   SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
 
