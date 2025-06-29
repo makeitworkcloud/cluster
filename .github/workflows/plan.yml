@@ -11,7 +11,7 @@ env:
 
 jobs:
   plan:
-    runs-on: fedora-libvirt
+    runs-on: [self-hosted, fedora-libvirt]
     container: ghcr.io/makeitworkcloud/terraform-runner:latest
 
     steps:
