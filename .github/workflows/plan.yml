@@ -2,8 +2,6 @@
 name: Plan - Terraform via ARC
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
   workflow_dispatch:
 
 env:
@@ -11,17 +9,11 @@ env:
 
 jobs:
   plan:
-    runs-on: ubuntu-latest
+    runs-on: fedora-libvirt
     container: ghcr.io/makeitworkcloud/terraform-runner:latest
 
     steps:
       - uses: actions/checkout@v4
-
-      - uses: Boostport/setup-cloudflare-warp@v1
-        with:
-          organization: makeitworkcloud
-          auth_client_id: ${{ secrets.CLOUDFLARE_AUTH_CLIENT_ID }}
-          auth_client_secret: ${{ secrets.CLOUDFLARE_AUTH_CLIENT_SECRET }}
 
       - name: Login to OpenShift
         uses: redhat-actions/oc-login@v1
