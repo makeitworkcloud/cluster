@@ -16,9 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Disabling git safe directories, running as root
-        run: git config --global --add safe.directory '*'
-
       - uses: Boostport/setup-cloudflare-warp@v1
         with:
           organization: makeitworkcloud
