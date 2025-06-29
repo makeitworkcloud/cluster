@@ -2,6 +2,8 @@
 name: Plan - Terraform via ARC
 
 on:
+  pull_request:
+    types: [opened, reopened, synchronize]
   workflow_dispatch:
 
 env:

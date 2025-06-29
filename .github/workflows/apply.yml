@@ -1,6 +1,9 @@
 ---
 name: Apply - Terraform via ARC
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 env:
