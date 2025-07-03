@@ -1,3 +1,4 @@
+---
 apiVersion: automationcontroller.ansible.com/v1beta1
 kind: AutomationController
 metadata:
@@ -25,7 +26,7 @@ spec:
   web_readiness_initial_delay: 20
   metrics_utility_console_enabled: false
   web_manage_replicas: true
-  projects_storage_size: 8Gi
+  projects_storage_size: 20Gi
   auto_upgrade: true
   task_privileged: false
   task_readiness_period: 0
@@ -50,8 +51,9 @@ spec:
   loadbalancer_protocol: http
   metrics_utility_cronjob_gather_schedule: '@hourly'
   task_liveness_timeout: 1
-  hostname: ansible.makeitwork.cloud
   admin_email: steven@makeitwork.cloud
+  admin_password_secret: controller-admin-password
+  postgres_storage_class: crc-csi-hostpath-provisioner
   route_host: ansible.makeitwork.cloud
   route_tls_secret: makeitwork-tls
   projects_use_existing_claim: _No_
