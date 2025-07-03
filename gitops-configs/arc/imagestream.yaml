@@ -19,19 +19,3 @@ spec:
       scheduled: true
     lookupPolicy:
       local: true
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  name: terraform-runner
-  namespace: arc-runners
-spec:
-  tags:
-  - from:
-      kind: DockerImage
-      name: ghcr.io/makeitworkcloud/terraform-runner
-    name: latest
-    importPolicy:
-      scheduled: true
-    lookupPolicy:
-      local: true
