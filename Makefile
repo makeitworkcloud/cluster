@@ -6,7 +6,7 @@ OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yaml | grep tf_na
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
 DESIRED_CONTEXT := $(shell sops decrypt secrets/secrets.yaml | grep desired_context | cut -d ' ' -f 2)
 
-.PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks argocd-login argocd-sync sync clean
+.PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks argocd-login argocd-password password argocd-sync sync clean
 
 help:
 	@echo "General targets"
@@ -79,6 +79,8 @@ check-context:
 argocd-password:
 	@ ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d
 	@ echo
+
+password: argocd-password
 
 argocd-login:
 	@ argocd login --skip-test-tls --insecure --username admin --password "$(shell ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d)" ${ARGOCD_URL}
