@@ -7,6 +7,7 @@ resource "kubernetes_namespace" "openshift_gitops" {
       metadata[0].annotations["openshift.io/sa.scc.mcs"],
       metadata[0].annotations["openshift.io/sa.scc.supplemental-groups"],
       metadata[0].annotations["openshift.io/sa.scc.uid-range"],
+      metadata[0].annotations["security.openshift.io/MinimallySufficientPodSecurityStandard"],
       metadata[0].labels["security.openshift.io/scc.podSecurityLabelSync"]
     ]
   }
