@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 OPENSHIFT := $(shell which oc)
 TERRAFORM := $(shell which terraform)
 ARGOCD_URL := $(shell sops decrypt secrets/secrets.yaml | grep argocd_url | cut -d ' ' -f 2)
