@@ -1,0 +1,15 @@
+---
+apiVersion: aap.ansible.com/v1alpha1
+kind: AnsibleAutomationPlatform
+metadata:
+  name: aap
+  namespace: aap
+spec:
+  route_tls_termination_mechanism: Edge
+  no_log: true
+  api:
+    log_level: INFO
+    replicas: 1
+  ingress_type: Route
+  route_host: ansible.makeitwork.cloud
+  route_tls_secret: makeitwork-tls
