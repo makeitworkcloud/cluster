@@ -1,5 +1,5 @@
 ---
-name: Plan - Terraform via ARC
+name: Plan
 
 on:
   pull_request:
