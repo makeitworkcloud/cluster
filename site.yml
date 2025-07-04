@@ -1,0 +1,15 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Load SOPS values
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Load vars task
+      community.sops.load_vars:
+        file: secrets/secrets.yaml
+- name: Deploy OpenShift Local + GitOps
+  gather_facts: true
+  hosts: all
+  roles:
+    - crc
+    - ksopsgitops
