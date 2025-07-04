@@ -12,7 +12,7 @@ resource "kubernetes_secret" "argocd_github_repo_secret" {
     project = "default"
     type    = "git"
   }
-  depends_on = [kubernetes_manifest.openshift_gitops_subscription]
+  depends_on = [kubernetes_cluster_role_binding.openshift_gitops_cluster_admin]
 }
 
 resource "kubernetes_manifest" "argocd_kustomize_app" {
@@ -27,7 +27,7 @@ resource "kubernetes_manifest" "argocd_kustomize_app" {
       project = "default"
       source = {
         repoURL        = "https://github.com/makeitworkcloud/cluster.git"
-        path           = "gitops-configs"
+        path           = "kustomize"
         targetRevision = "main"
       }
       destination = {
@@ -43,3 +43,4 @@ resource "kubernetes_manifest" "argocd_kustomize_app" {
   }
   depends_on = [kubernetes_secret.argocd_github_repo_secret]
 }
+

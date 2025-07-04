@@ -20,6 +20,14 @@ jobs:
       - name: Run Git as root
         run: git config --global --add safe.directory '*'
 
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+      - name: Copy SSH area
+
       - name: Login to OpenShift
         uses: redhat-actions/oc-login@v1
         with:

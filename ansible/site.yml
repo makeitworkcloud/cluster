@@ -1,0 +1,8 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Deploy OpenShift Local + GitOps
+  gather_facts: true
+  hosts: all
+  roles:
+    - crc
+    - ksopsgitops

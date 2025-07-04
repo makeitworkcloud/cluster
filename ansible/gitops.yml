@@ -1,6 +1,0 @@
-#!/usr/bin/env ansible-playbook
----
-- name: Deploy OpenShift GitOps Operator and KSOPS
-  hosts: all
-  gather_facts: false
-  tasks:
