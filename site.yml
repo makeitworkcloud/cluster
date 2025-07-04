@@ -7,9 +7,12 @@
     - name: Load vars task
       community.sops.load_vars:
         file: secrets/secrets.yaml
-- name: Deploy OpenShift Local + GitOps
-  gather_facts: true
+
+- name: Deploy OpenShift Local (crc) and GitOps + KSOPS
   hosts: all
+  gather_facts: true
   roles:
-    - crc
-    - ksopsgitops
+    - role: crc
+    - role: ksopsgitops
+      vars:
+        age_keys: "{{ hostvars['localhost']['age_keys'] }}"
