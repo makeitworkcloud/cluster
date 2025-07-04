@@ -1,10 +1,11 @@
 SHELL := /bin/bash
 CLUSTER_HOST := ltc.makeitwork.cloud
+CLUSTER_USER := $(shell sops decrypt secrets/secrets.yaml | grep ^cluster_user | cut -d ' ' -f 2)
 SOPS_AGE_KEYS := $(shell sops decrypt secrets/secrets.yaml | grep ^sops_age_key | cut -d ' ' -f 2)
 OPENSHIFT := $(shell which oc)
 TERRAFORM := $(shell which terraform)
 ARGOCD_URL := $(shell sops decrypt secrets/secrets.yaml | grep ^argocd_url | cut -d ' ' -f 2)
-OPENSHIFT_API_URL := $(shell sops decrypt secrets/secrets.yaml | grep ^cluster_host | cut -d ' ' -f 2)
+OPENSHIFT_API_URL := $(shell sops decrypt secrets/secrets.yaml | grep ^openshift_api_url | cut -d ' ' -f 2)
 OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yaml | grep ^tf_namespace | cut -d ' ' -f 2)
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
 DESIRED_CONTEXT := $(shell sops decrypt secrets/secrets.yaml | grep ^desired_context | cut -d ' ' -f 2)
@@ -53,7 +54,7 @@ plan: ansible-check init .terraform/plan
 ansible-check:
 	@rm -rf ~/.ansible >/dev/null 2>&1
 	@ansible-galaxy install -r ansible/requirements.yml
-	@ansible/site.yml -i "${CLUSTER_HOST}," -e 'age_keys=${SOPS_AGE_KEYS}' -C --diff
+	@ansible/site.yml -u ${CLUSTER_USER} -i "${CLUSTER_HOST}," -e 'age_keys=${SOPS_AGE_KEYS}' -C --diff
 
 apply: ansible-init test plan
 	@${TERRAFORM} apply -auto-approve -compact-warnings .terraform/plan
@@ -62,7 +63,7 @@ apply: ansible-init test plan
 ansible-init:
 	@rm -rf ~/.ansible >/dev/null 2>&1
 	@ansible-galaxy install -r ansible/requirements.yml
-	@ansible/site.yml -i "${CLUSTER_HOST}," -e 'age_keys=${SOPS_AGE_KEYS}'
+	@ansible/site.yml -u ${CLUSTER_USER} -i "${CLUSTER_HOST}," -e 'age_keys=${SOPS_AGE_KEYS}'
 
 test: check-context .git/hooks/pre-commit
 	@pre-commit run -a
