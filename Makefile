@@ -1,4 +1,5 @@
 SHELL := /bin/bash
+CLUSTER_HOST := ltc.makeitwork.cloud
 OPENSHIFT := $(shell which oc)
 TERRAFORM := $(shell which terraform)
 ARGOCD_URL := $(shell sops decrypt secrets/secrets.yaml | grep argocd_url | cut -d ' ' -f 2)
@@ -31,6 +32,9 @@ help:
 	@echo "\tpre-commit-check-deps: check pre-commit dependencies"
 	@echo
 
+check-context:
+	@if [[ "${CONTEXT}" == *"${DESIRED_CONTEXT}"* ]]; then echo "Context check passed"; else echo "Context check failed" && exit 1; fi
+
 clean:
 	@find . -name .terraform -type d | xargs -I {} rm -rf {}
 
@@ -40,17 +44,24 @@ init: check-context clean .terraform/terraform.tfstate
 	@${OPENSHIFT} get project ${OPENSHIFT_TF_NAMESPACE} > /dev/null 2>&1 || ${OPENSHIFT} new-project ${OPENSHIFT_TF_NAMESPACE}
 	@${TERRAFORM} init -reconfigure -upgrade -input=false -backend-config="host=https://${OPENSHIFT_API_URL}" -backend-config="namespace=${OPENSHIFT_TF_NAMESPACE}"
 
-plan: init .terraform/plan
+plan: ansible-check init .terraform/plan
 
 .terraform/plan:
-	@${TERRAFORM} state show kubernetes_manifest.openshift_gitops_subscription >/dev/null 2>&1 && @${TERRAFORM} plan -compact-warnings -out .terraform/plan || ${TERRAFORM} plan -compact-warnings -out .terraform/plan -target kubernetes_manifest.openshift_gitops_subscription
+	@${TERRAFORM} plan -compact-warnings -out .terraform/plan
 
-initial-deployment-apply:
-	@${TERRAFORM} state show kubernetes_manifest.openshift_gitops_subscription >/dev/null 2>&1 || ( echo "INITIAL DEPLOYMENT" && ${TERRAFORM} apply -auto-approve -compact-warnings -target kubernetes_manifest.openshift_gitops_subscription .terraform/plan && rm -f .terraform/plan && echo "WAITING FOR GITOPS DEPLOYMENT" && while true; do oc get argocd -n openshift-gitops openshift-gitops >/dev/null 2>&1 && sleep 10 && break; sleep 2; done && oc apply -k kustomize && echo "WAITING FOR CHANGES TO BE DEPLOYED" && while true; do oc get argocd openshift-gitops -n openshift-gitops -o yaml | grep KSOPS >/dev/null 2>&1 && sleep 10 && break; sleep 2; done && ${TERRAFORM} plan -compact-warnings -out .terraform/plan )
+ansible-check:
+	@rm -rf ~/.ansible >/dev/null 2>&1
+	@ansible-galaxy install -r ansible/requirements.yml
+	@ansible/site.yml -i "${CLUSTER_HOST}," -C --diff
 
-apply: test plan initial-deployment-apply
+apply: ansible-init test plan
 	@${TERRAFORM} apply -auto-approve -compact-warnings .terraform/plan
 	@rm -f .terraform/plan
+
+ansible-init:
+	@rm -rf ~/.ansible >/dev/null 2>&1
+	@ansible-galaxy install -r ansible/requirements.yml
+	@ansible/site.yml -i "${CLUSTER_HOST},"
 
 test: check-context .git/hooks/pre-commit
 	@pre-commit run -a
@@ -74,19 +85,18 @@ pre-commit-install-hooks: .git/hooks/pre-commit
 .git/hooks/pre-commit: pre-commit-check-deps
 	@pre-commit install --install-hooks
 
-check-context:
-	@ if [[ "${CONTEXT}" == *"${DESIRED_CONTEXT}"* ]]; then echo "Context check passed"; else echo "Context check failed" && exit 1; fi
 
 argocd-password:
-	@ ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d
-	@ echo
+	@${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d
+	@echo
 
 password: argocd-password
 
 argocd-login:
-	@ argocd login --skip-test-tls --insecure --username admin --password "$(shell ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d)" ${ARGOCD_URL}
+	@argocd login --skip-test-tls --insecure --username admin --password "$(shell ${OPENSHIFT} get secret openshift-gitops-cluster -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d)" ${ARGOCD_URL}
 
 argocd-sync: argocd-login
-	@ argocd app sync gitops-configs
+	@argocd app sync gitops-configs
 
 sync: argocd-sync
+

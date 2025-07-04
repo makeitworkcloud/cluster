@@ -1,10 +1,9 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: openshift-gitops
 resources:
-- base
-patches:
-- path: overlays/argocd.yaml
-  target:
-    kind: ArgoCD
-    name: openshift-gitops
+- cert-manager
+- arc
+- ansible
+generators:
+- generator/ksops-generator.yaml

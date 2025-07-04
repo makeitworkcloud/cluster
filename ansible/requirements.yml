@@ -1,0 +1,5 @@
+---
+- name: crc
+  src: https://github.com/makeitworkcloud/ansible-crc
+- name: ksopsgitops
+  src: https://github.com/makeitworkcloud/ansible-ksops
