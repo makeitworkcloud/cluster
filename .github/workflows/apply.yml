@@ -32,7 +32,7 @@ jobs:
       - name: Ansible
         run: |
           ansible-galaxy install -r requirements.yml
-          ansible-playbook site.yml -u ${{ secrets.SSH_USER }} -i "${{ secrets.SSH_HOST }}," -e "age_keys=$(sops decrypt secrets/secrets.yaml | grep ^age_secret_key | cut -d ' ' -f 2)"
+          ansible-playbook site.yml -u ${{ secrets.SSH_USER }} -i "${{ secrets.SSH_HOST }},"
 
       - name: Login to OpenShift
         uses: redhat-actions/oc-login@v1
