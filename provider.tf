@@ -11,21 +11,12 @@ terraform {
   # please don't pin provider versions unless there is a known bug being worked around.
   # please add comment-doc when pinning to reference upstream bugs/docs that show the reason for the pin.
   required_providers {
-    helm = {
-      source = "hashicorp/helm"
-    }
     kubernetes = {
       source = "hashicorp/kubernetes"
     }
     sops = {
       source = "carlpett/sops"
     }
-  }
-}
-
-provider "helm" {
-  kubernetes {
-    config_path = "~/.kube/config"
   }
 }
 

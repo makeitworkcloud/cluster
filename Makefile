@@ -43,7 +43,7 @@ init: check-context clean .terraform/terraform.tfstate
 plan: init .terraform/plan
 
 .terraform/plan:
-	@${TERRAFORM} state show kubernetes_manifest.openshift_gitops_subscription >/dev/null 2>&1 && @${TERRAFORM} plan -compact-warnings -out .terraform/plan || ${TERRAFORM} plan -compact-warnings -out .terraform/plan -target kubernetes_manifest.openshift_gitops_subscription
+	@${TERRAFORM} state show kubernetes_manifest.openshift_gitops_subscription >/dev/null 2>&1 && ${TERRAFORM} plan -compact-warnings -out .terraform/plan || ${TERRAFORM} plan -compact-warnings -out .terraform/plan -target kubernetes_manifest.openshift_gitops_subscription
 
 initial-deployment-apply:
 	@${TERRAFORM} state show kubernetes_manifest.openshift_gitops_subscription >/dev/null 2>&1 || ( echo "INITIAL DEPLOYMENT" && ${TERRAFORM} apply -auto-approve -compact-warnings -target kubernetes_manifest.openshift_gitops_subscription .terraform/plan && rm -f .terraform/plan && echo "WAITING FOR GITOPS DEPLOYMENT" && while true; do oc get argocd -n openshift-gitops openshift-gitops >/dev/null 2>&1 && sleep 10 && break; sleep 2; done && oc apply -k kustomize && echo "WAITING FOR CHANGES TO BE DEPLOYED" && while true; do oc get argocd openshift-gitops -n openshift-gitops -o yaml | grep KSOPS >/dev/null 2>&1 && sleep 10 && break; sleep 2; done && ${TERRAFORM} plan -compact-warnings -out .terraform/plan )
