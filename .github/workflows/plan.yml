@@ -27,6 +27,8 @@ jobs:
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
       - name: Copy SSH area
+        run: cp -r /root/.ssh /github/home/
+
 
       - name: Login to OpenShift
         uses: redhat-actions/oc-login@v1
