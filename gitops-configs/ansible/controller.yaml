@@ -52,7 +52,6 @@ spec:
   metrics_utility_cronjob_gather_schedule: '@hourly'
   task_liveness_timeout: 1
   admin_email: steven@makeitwork.cloud
-  admin_password_secret: controller-admin-password
   postgres_storage_class: crc-csi-hostpath-provisioner
   route_host: ansible.makeitwork.cloud
   route_tls_secret: makeitwork-tls
