@@ -1,7 +1,4 @@
 SHELL := /bin/bash
-CLUSTER_HOST := ltc.makeitwork.cloud
-CLUSTER_USER := $(shell sops decrypt secrets/secrets.yaml | grep ^cluster_user | cut -d ' ' -f 2)
-SOPS_AGE_KEYS := $(shell sops decrypt secrets/secrets.yaml | grep ^sops_age_key | cut -d ' ' -f 2)
 OPENSHIFT := $(shell which oc)
 TERRAFORM := $(shell which terraform)
 ARGOCD_URL := $(shell sops decrypt secrets/secrets.yaml | grep ^argocd_url | cut -d ' ' -f 2)
@@ -10,7 +7,7 @@ OPENSHIFT_TF_NAMESPACE := $(shell sops decrypt secrets/secrets.yaml | grep ^tf_n
 CONTEXT := $(shell ${OPENSHIFT} config current-context 2>/dev/null)
 DESIRED_CONTEXT := $(shell sops decrypt secrets/secrets.yaml | grep ^desired_context | cut -d ' ' -f 2)
 
-.PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks argocd-login argocd-password password argocd-sync sync clean
+.PHONY: help init plan apply test pre-commit-check-deps pre-commit-install-hooks argocd-login argocd-password password argocd-sync sync clean ansible-init
 
 help:
 	@echo "General targets"
@@ -46,24 +43,14 @@ init: check-context clean .terraform/terraform.tfstate
 	@${OPENSHIFT} get project ${OPENSHIFT_TF_NAMESPACE} > /dev/null 2>&1 || ${OPENSHIFT} new-project ${OPENSHIFT_TF_NAMESPACE}
 	@${TERRAFORM} init -reconfigure -upgrade -input=false -backend-config="host=https://${OPENSHIFT_API_URL}" -backend-config="namespace=${OPENSHIFT_TF_NAMESPACE}"
 
-plan: ansible-check init .terraform/plan
+plan: init .terraform/plan
 
 .terraform/plan:
 	@${TERRAFORM} plan -compact-warnings -out .terraform/plan
 
-ansible-check:
-	@rm -rf ~/.ansible >/dev/null 2>&1
-	@ansible-galaxy install -r ansible/requirements.yml
-	@ansible/site.yml -u ${CLUSTER_USER} -i "${CLUSTER_HOST}," -e 'age_keys=${SOPS_AGE_KEYS}' -C --diff
-
-apply: ansible-init test plan
+apply: test plan
 	@${TERRAFORM} apply -auto-approve -compact-warnings .terraform/plan
 	@rm -f .terraform/plan
-
-ansible-init:
-	@rm -rf ~/.ansible >/dev/null 2>&1
-	@ansible-galaxy install -r ansible/requirements.yml
-	@ansible/site.yml -u ${CLUSTER_USER} -i "${CLUSTER_HOST}," -e 'age_keys=${SOPS_AGE_KEYS}'
 
 test: check-context .git/hooks/pre-commit
 	@pre-commit run -a
