@@ -31,6 +31,7 @@ jobs:
 
       - name: Ansible
         run: |
+          rm -rf ~/.ansible >/dev/null 2>&1 || echo
           ansible-galaxy install -r requirements.yml
           ansible-playbook site.yml -u ${{ secrets.SSH_USER }} -i "${{ secrets.SSH_HOST }},"
 
