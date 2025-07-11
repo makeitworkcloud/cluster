@@ -79,7 +79,6 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/registry
           name: registry-volume
-      volumeMounts:
         - mountPath: /etc/distribution/config.yml
           name: registry-config-volume
           subPath: config.yml
