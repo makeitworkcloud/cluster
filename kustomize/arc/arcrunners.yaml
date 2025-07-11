@@ -15,8 +15,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-07-09T16:20:33Z"
-    mac: ENC[AES256_GCM,data:oxx+Qu0FdFrvykEx8/7xK/XMKH+eoPaex6o55BEe2KEkXKixm8Ddy+zMWBxCmmyjBNoYDt3Gx0nfJJy9wZCVykRkQ5OCFq3UQyQTOQVVm/2dyVxg4/aIFwoQZjr3Pm0BhI3a7cH5aaagrlmC6e16WUAhQaE22xzA8qlmPLi8JSE=,iv:1WELd5JPs/NznRWnnhkZ/RNY2eK3x7LVo25EkRAHK78=,tag:AzMTCRqgKtsdY3bznxu/uw==,type:str]
+    lastmodified: "2025-07-11T01:02:43Z"
+    mac: ENC[AES256_GCM,data:8xgJ/K3OJme/r87V4DNa0P3A4vHr3kDe7zvrLqAKFBPwgOZC5eP/9YK1ikkQlKBxiFRfINumjb5P2lIgz7tXKNZ0G51WTIvM4CzkyFFPWTUsGN2cFK4KgwjigFXI4aj9iRIFqStPlo0Ktpxv7xDdJ5tRHudXJ5Y6hUdUu860Tm8=,iv:JdV2v6E20N9oT7eZXzNX9GdoqCLJi8gooFMkg0YQdVs=,tag:FWYCTeQYSQshiDC4V2rJwQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -28,7 +28,7 @@ metadata:
     annotations:
         kustomize.config.k8s.io/behavior: merge
 data:
-    daemon.json: '{"insecure-registries": ["image-registry.openshift-image-registry.svc:5000", "image-registry.openshift-image-registry.svc.cluster.local:5000", "10.217.5.181:5000", "default-route-openshift-image-registry.apps.makeitwork.cloud"]}'
+    daemon.json: '{"registry-mirrors": ["registry.docker-registry.svc:5000"], "insecure-registries": ["image-registry.openshift-image-registry.svc:5000", "image-registry.openshift-image-registry.svc.cluster.local:5000", "10.217.5.181:5000", "default-route-openshift-image-registry.apps.makeitwork.cloud"]}'
 sops:
     age:
         - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
@@ -40,8 +40,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-07-09T16:20:33Z"
-    mac: ENC[AES256_GCM,data:oxx+Qu0FdFrvykEx8/7xK/XMKH+eoPaex6o55BEe2KEkXKixm8Ddy+zMWBxCmmyjBNoYDt3Gx0nfJJy9wZCVykRkQ5OCFq3UQyQTOQVVm/2dyVxg4/aIFwoQZjr3Pm0BhI3a7cH5aaagrlmC6e16WUAhQaE22xzA8qlmPLi8JSE=,iv:1WELd5JPs/NznRWnnhkZ/RNY2eK3x7LVo25EkRAHK78=,tag:AzMTCRqgKtsdY3bznxu/uw==,type:str]
+    lastmodified: "2025-07-11T01:02:43Z"
+    mac: ENC[AES256_GCM,data:8xgJ/K3OJme/r87V4DNa0P3A4vHr3kDe7zvrLqAKFBPwgOZC5eP/9YK1ikkQlKBxiFRfINumjb5P2lIgz7tXKNZ0G51WTIvM4CzkyFFPWTUsGN2cFK4KgwjigFXI4aj9iRIFqStPlo0Ktpxv7xDdJ5tRHudXJ5Y6hUdUu860Tm8=,iv:JdV2v6E20N9oT7eZXzNX9GdoqCLJi8gooFMkg0YQdVs=,tag:FWYCTeQYSQshiDC4V2rJwQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -157,8 +157,8 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-07-09T16:20:33Z"
-    mac: ENC[AES256_GCM,data:oxx+Qu0FdFrvykEx8/7xK/XMKH+eoPaex6o55BEe2KEkXKixm8Ddy+zMWBxCmmyjBNoYDt3Gx0nfJJy9wZCVykRkQ5OCFq3UQyQTOQVVm/2dyVxg4/aIFwoQZjr3Pm0BhI3a7cH5aaagrlmC6e16WUAhQaE22xzA8qlmPLi8JSE=,iv:1WELd5JPs/NznRWnnhkZ/RNY2eK3x7LVo25EkRAHK78=,tag:AzMTCRqgKtsdY3bznxu/uw==,type:str]
+    lastmodified: "2025-07-11T01:02:43Z"
+    mac: ENC[AES256_GCM,data:8xgJ/K3OJme/r87V4DNa0P3A4vHr3kDe7zvrLqAKFBPwgOZC5eP/9YK1ikkQlKBxiFRfINumjb5P2lIgz7tXKNZ0G51WTIvM4CzkyFFPWTUsGN2cFK4KgwjigFXI4aj9iRIFqStPlo0Ktpxv7xDdJ5tRHudXJ5Y6hUdUu860Tm8=,iv:JdV2v6E20N9oT7eZXzNX9GdoqCLJi8gooFMkg0YQdVs=,tag:FWYCTeQYSQshiDC4V2rJwQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
 ---
@@ -188,7 +188,7 @@ sops:
             L1dVQW9WODBGWUpvL00xWE9hK1B1SFUKY7y80019V+3Hg3xi3nMHp32dwh32D28i
             5ErMl32hZ9uYsyofHANDg+I9GAHleo9FoksMh4GHNX3IT4LepgQSMg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-07-09T16:20:33Z"
-    mac: ENC[AES256_GCM,data:oxx+Qu0FdFrvykEx8/7xK/XMKH+eoPaex6o55BEe2KEkXKixm8Ddy+zMWBxCmmyjBNoYDt3Gx0nfJJy9wZCVykRkQ5OCFq3UQyQTOQVVm/2dyVxg4/aIFwoQZjr3Pm0BhI3a7cH5aaagrlmC6e16WUAhQaE22xzA8qlmPLi8JSE=,iv:1WELd5JPs/NznRWnnhkZ/RNY2eK3x7LVo25EkRAHK78=,tag:AzMTCRqgKtsdY3bznxu/uw==,type:str]
+    lastmodified: "2025-07-11T01:02:43Z"
+    mac: ENC[AES256_GCM,data:8xgJ/K3OJme/r87V4DNa0P3A4vHr3kDe7zvrLqAKFBPwgOZC5eP/9YK1ikkQlKBxiFRfINumjb5P2lIgz7tXKNZ0G51WTIvM4CzkyFFPWTUsGN2cFK4KgwjigFXI4aj9iRIFqStPlo0Ktpxv7xDdJ5tRHudXJ5Y6hUdUu860Tm8=,iv:JdV2v6E20N9oT7eZXzNX9GdoqCLJi8gooFMkg0YQdVs=,tag:FWYCTeQYSQshiDC4V2rJwQ==,type:str]
     encrypted_regex: ^(github_token)$
     version: 3.10.2
