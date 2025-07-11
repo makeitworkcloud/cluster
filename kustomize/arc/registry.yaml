@@ -41,7 +41,7 @@ data:
         interval: 10s
         threshold: 3
     proxy:
-      remoteurl: ghcr.io
+      remoteurl: https://ghcr.io
 ---
 apiVersion: apps/v1
 kind: Deployment
