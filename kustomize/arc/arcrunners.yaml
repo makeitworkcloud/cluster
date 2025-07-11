@@ -28,7 +28,7 @@ metadata:
     annotations:
         kustomize.config.k8s.io/behavior: merge
 data:
-    daemon.json: '{"registry-mirrors": ["http://registry.docker-registry.svc:5000"], "insecure-registries": ["image-registry.openshift-image-registry.svc:5000", "image-registry.openshift-image-registry.svc.cluster.local:5000", "10.217.5.181:5000", "default-route-openshift-image-registry.apps.makeitwork.cloud"]}'
+    daemon.json: '{"insecure-registries": ["image-registry.openshift-image-registry.svc:5000", "image-registry.openshift-image-registry.svc.cluster.local:5000", "10.217.5.181:5000", "default-route-openshift-image-registry.apps.makeitwork.cloud"]}'
 sops:
     age:
         - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l

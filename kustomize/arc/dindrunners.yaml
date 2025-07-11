@@ -12,7 +12,7 @@ metadata:
     annotations:
         kustomize.config.k8s.io/behavior: merge
 data:
-    daemon.json: '{"registry-mirrors": ["http://registry.docker-registry.svc:5000"], "insecure-registries": ["image-registry.openshift-image-registry.svc:5000", "image-registry.openshift-image-registry.svc.cluster.local:5000", "default-route-openshift-image-registry.apps.makeitwork.cloud"]}'
+    daemon.json: '{"insecure-registries": ["image-registry.openshift-image-registry.svc:5000", "image-registry.openshift-image-registry.svc.cluster.local:5000", "default-route-openshift-image-registry.apps.makeitwork.cloud"]}'
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
