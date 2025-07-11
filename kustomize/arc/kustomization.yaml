@@ -8,3 +8,4 @@ resources:
 - dindsystem.yaml
 - arcrunners.yaml
 - dindrunners.yaml
+- registry.yaml
