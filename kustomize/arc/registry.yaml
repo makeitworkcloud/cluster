@@ -1,118 +1,148 @@
----
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: docker-registry
+    name: docker-registry
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBT0R6bEdHcU10U014RHBP
+            MloxMm1JUHVRVWVrdkc1ZU1MRTlyVCt6Smc0CnlQblYzYXJDdzJGQXdRUmNJakhh
+            RmFncTUrNmdtOVpFUklvQXEyREZUSVEKLS0tIDV3c2hHbmorMktyWVp1TzhPSjN1
+            ckZVSlVYWSs2RzNoaVUzRk90eWpuNXMKki9aji3PlxSujkRxQMqplx4v1Nsx7O0u
+            e0+HeaRv7tDpER0Ge1BosaGKz7hRRgKvJAXqTrxzP9d9HWyk8rMs+g==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-07-11T01:48:16Z"
+    mac: ENC[AES256_GCM,data:FGzUx16O1TCuInT1DXh/88/YWo3kKsrir/Y/ytSZE4YRMVlI1e4lzcfU6AyILiVXvyP/i9ZY5GT44JNh+wfVsYMw/ptDpbnYtsKB1iLtDXDhHppSt9s3HN8iNl49SIC0Pi49Bz41dUgxJ7jxkbrYjabLY60ux4pYlHf1F9KBkeQ=,iv:AjT+jbS5oy46ItH/gwUi+0DXY3FlYUQgZUJo+Oq9RW8=,tag:cPz5dBRCoHsauDvnJszETQ==,type:str]
+    encrypted_regex: ^(config.yml)$
+    version: 3.10.2
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: docker-registry-config
-  namespace: docker-registry
-  annotations:
-    kustomize.config.k8s.io/behavior: merge
+    name: docker-registry-config
+    namespace: docker-registry
+    annotations:
+        kustomize.config.k8s.io/behavior: merge
 data:
-  config.yml: |
-    version: 0.1
-    log:
-      level: debug
-      fields:
-        service: registry
-        environment: development
-    storage:
-        delete:
-          enabled: true
-        cache:
-            blobdescriptor: inmemory
-        filesystem:
-            rootdirectory: /var/lib/registry
-        tag:
-          concurrencylimit: 5
-    http:
-        addr: :5000
-        debug:
-            addr: :5001
-            prometheus:
-                enabled: true
-                path: /metrics
-    health:
-      storagedriver:
-        enabled: true
-        interval: 10s
-        threshold: 3
-    proxy:
-      remoteurl: https://ghcr.io
+    config.yml: ENC[AES256_GCM,data:Fr8Db3jBEhxKN4Ffkj1nF9OlJ6CVra4lh77+D4wOkiDV10GhZbhH5/Ami49DxHkfoCamirNpYTco5i1exK22e/7C/TRVSzPPNuVvZxd57bE+raGNxvpaFPDJ0raXfcvMsz8K9hk4m3kQV+IHaVITrpG/cPHQnZwdGUjcUeZQ5hrnws9ossic8o2/TPgqTT4kFj/ev9BfzkOvUnkCW70kNRD9lNofFG5aW8s4gi9T1tPugG1ogf/T2nWrIO5leorvnVmabDlJZw0ix4idyjh/TFWhJELbeZ2qYZfa0EKbK6grcXZaz7MsPnurqzxWypowlYgVkr0PwPhSP0Cm1aX5DBpuzXtWpn+uooowLI97ue6zi+UDX8h82/G6d+YAJ/dTyzsIfov1CQrT9Zd8te8NfVl62mEANgsXlFhEgDhjG2yCn2huEMqy3yT1TCh1Ck28SsyXAaSfbiLaIyyCDrfeKhA2hpkWBOuqdtG6c9rANRfg6F9mrQhhH3BIw+xD5swxKHlhyHoO/UKWSkAEGdITvLyS15LEMT0eqpvwcg5WLCBK+2zdP7VGzjWlY5c3+5/B0nEu3x1sn4PHLYB0ExcW307WCnPyzTvVO9uzXyTOll6fyavLtvic4Pdsd9bYwh0uZCMiscUX3Jeg1QUaiQ92DXfOTFBu152Bo5a2CSkeenP+I49VfX1zNo9KFkAu/m86siG1GovpZQjJV4tXV27rD3g9EG9v+xInkMAdX4x6H4z9INgOp72mtchnrco+qIB+gbiOFA1j,iv:Kv91jdg470La7vd5iUx36Sp6L1R9mfOAlyP9eY3XLHk=,tag:ppCvkHuppbE5jEjsploQug==,type:str]
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBT0R6bEdHcU10U014RHBP
+            MloxMm1JUHVRVWVrdkc1ZU1MRTlyVCt6Smc0CnlQblYzYXJDdzJGQXdRUmNJakhh
+            RmFncTUrNmdtOVpFUklvQXEyREZUSVEKLS0tIDV3c2hHbmorMktyWVp1TzhPSjN1
+            ckZVSlVYWSs2RzNoaVUzRk90eWpuNXMKki9aji3PlxSujkRxQMqplx4v1Nsx7O0u
+            e0+HeaRv7tDpER0Ge1BosaGKz7hRRgKvJAXqTrxzP9d9HWyk8rMs+g==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-07-11T01:48:16Z"
+    mac: ENC[AES256_GCM,data:FGzUx16O1TCuInT1DXh/88/YWo3kKsrir/Y/ytSZE4YRMVlI1e4lzcfU6AyILiVXvyP/i9ZY5GT44JNh+wfVsYMw/ptDpbnYtsKB1iLtDXDhHppSt9s3HN8iNl49SIC0Pi49Bz41dUgxJ7jxkbrYjabLY60ux4pYlHf1F9KBkeQ=,iv:AjT+jbS5oy46ItH/gwUi+0DXY3FlYUQgZUJo+Oq9RW8=,tag:cPz5dBRCoHsauDvnJszETQ==,type:str]
+    encrypted_regex: ^(config.yml)$
+    version: 3.10.2
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: registry
-    app.kubernetes.io/component: registry
-    app.kubernetes.io/instance: registry
-  name: registry
-  namespace: docker-registry
+    labels:
+        app: registry
+        app.kubernetes.io/component: registry
+        app.kubernetes.io/instance: registry
+    name: registry
+    namespace: docker-registry
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      deployment: registry
-  template:
-    metadata:
-      labels:
-        deployment: registry
-    spec:
-      containers:
-      - image: registry
-        imagePullPolicy: IfNotPresent
-        name: registry
-        ports:
-        - containerPort: 5000
-          protocol: TCP
-        resources:
-          limits:
-            memory: 8Gi
-          requests:
-            memory: 100Mi
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /var/lib/registry
-          name: registry-volume
-        - mountPath: /etc/distribution/config.yml
-          name: registry-config-volume
-          subPath: config.yml
-      volumes:
-        - name: registry-volume
-          ephemeral:
-            volumeClaimTemplate:
-              spec:
-                accessModes:
-                  - ReadWriteOnce
-                resources:
-                  requests:
-                    storage: 50Gi
-        - name: registry-config-volume
-          configMap:
-            name: docker-registry-config
-            items:
-              - key: config.yml
-                path: config.yml
+    replicas: 1
+    selector:
+        matchLabels:
+            deployment: registry
+    template:
+        metadata:
+            labels:
+                deployment: registry
+        spec:
+            containers:
+                - image: registry
+                  imagePullPolicy: IfNotPresent
+                  name: registry
+                  ports:
+                    - containerPort: 5000
+                      protocol: TCP
+                  resources:
+                    limits:
+                        memory: 8Gi
+                    requests:
+                        memory: 100Mi
+                  terminationMessagePath: /dev/termination-log
+                  terminationMessagePolicy: File
+                  volumeMounts:
+                    - mountPath: /var/lib/registry
+                      name: registry-volume
+                    - mountPath: /etc/distribution/config.yml
+                      name: registry-config-volume
+                      subPath: config.yml
+            volumes:
+                - name: registry-volume
+                  ephemeral:
+                    volumeClaimTemplate:
+                        spec:
+                            accessModes:
+                                - ReadWriteOnce
+                            resources:
+                                requests:
+                                    storage: 50Gi
+                - name: registry-config-volume
+                  configMap:
+                    name: docker-registry-config
+                    items:
+                        - key: config.yml
+                          path: config.yml
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBT0R6bEdHcU10U014RHBP
+            MloxMm1JUHVRVWVrdkc1ZU1MRTlyVCt6Smc0CnlQblYzYXJDdzJGQXdRUmNJakhh
+            RmFncTUrNmdtOVpFUklvQXEyREZUSVEKLS0tIDV3c2hHbmorMktyWVp1TzhPSjN1
+            ckZVSlVYWSs2RzNoaVUzRk90eWpuNXMKki9aji3PlxSujkRxQMqplx4v1Nsx7O0u
+            e0+HeaRv7tDpER0Ge1BosaGKz7hRRgKvJAXqTrxzP9d9HWyk8rMs+g==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-07-11T01:48:16Z"
+    mac: ENC[AES256_GCM,data:FGzUx16O1TCuInT1DXh/88/YWo3kKsrir/Y/ytSZE4YRMVlI1e4lzcfU6AyILiVXvyP/i9ZY5GT44JNh+wfVsYMw/ptDpbnYtsKB1iLtDXDhHppSt9s3HN8iNl49SIC0Pi49Bz41dUgxJ7jxkbrYjabLY60ux4pYlHf1F9KBkeQ=,iv:AjT+jbS5oy46ItH/gwUi+0DXY3FlYUQgZUJo+Oq9RW8=,tag:cPz5dBRCoHsauDvnJszETQ==,type:str]
+    encrypted_regex: ^(config.yml)$
+    version: 3.10.2
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: registry
-    app.kubernetes.io/component: registry
-    app.kubernetes.io/instance: registry
-  name: registry
-  namespace: docker-registry
+    labels:
+        app: registry
+        app.kubernetes.io/component: registry
+        app.kubernetes.io/instance: registry
+    name: registry
+    namespace: docker-registry
 spec:
-  ports:
-  - name: 5000-tcp
-    port: 5000
-    protocol: TCP
-    targetPort: 5000
-  selector:
-    deployment: registry
+    ports:
+        - name: 5000-tcp
+          port: 5000
+          protocol: TCP
+          targetPort: 5000
+    selector:
+        deployment: registry
+sops:
+    age:
+        - recipient: age152ek83tm4fj5u70r3fecytn4kg7c5xca24erjchxexx4pfqg6das7q763l
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBT0R6bEdHcU10U014RHBP
+            MloxMm1JUHVRVWVrdkc1ZU1MRTlyVCt6Smc0CnlQblYzYXJDdzJGQXdRUmNJakhh
+            RmFncTUrNmdtOVpFUklvQXEyREZUSVEKLS0tIDV3c2hHbmorMktyWVp1TzhPSjN1
+            ckZVSlVYWSs2RzNoaVUzRk90eWpuNXMKki9aji3PlxSujkRxQMqplx4v1Nsx7O0u
+            e0+HeaRv7tDpER0Ge1BosaGKz7hRRgKvJAXqTrxzP9d9HWyk8rMs+g==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-07-11T01:48:16Z"
+    mac: ENC[AES256_GCM,data:FGzUx16O1TCuInT1DXh/88/YWo3kKsrir/Y/ytSZE4YRMVlI1e4lzcfU6AyILiVXvyP/i9ZY5GT44JNh+wfVsYMw/ptDpbnYtsKB1iLtDXDhHppSt9s3HN8iNl49SIC0Pi49Bz41dUgxJ7jxkbrYjabLY60ux4pYlHf1F9KBkeQ=,iv:AjT+jbS5oy46ItH/gwUi+0DXY3FlYUQgZUJo+Oq9RW8=,tag:cPz5dBRCoHsauDvnJszETQ==,type:str]
+    encrypted_regex: ^(config.yml)$
+    version: 3.10.2
