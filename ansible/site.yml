@@ -6,7 +6,7 @@
   tasks:
     - name: Load vars task
       community.sops.load_vars:
-        file: secrets/secrets.yaml
+        file: ../secrets/secrets.yaml
 
 - name: Deploy OpenShift Local (crc) and GitOps + KSOPS
   hosts: all
