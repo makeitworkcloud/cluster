@@ -32,8 +32,8 @@ jobs:
       - name: Ansible Check
         run: |
           rm -rf ~/.ansible >/dev/null 2>&1 || echo
-          ansible-galaxy install -r requirements.yml
-          ansible-playbook site.yml -u ${{ secrets.SSH_USER }} -i "${{ secrets.SSH_HOST }}," -C --diff
+          ansible-galaxy install -r ansible/requirements.yml
+          ansible-playbook ansible/site.yml -u ${{ secrets.SSH_USER }} -i "${{ secrets.SSH_HOST }}," -C --diff
 
       - name: Login to OpenShift
         uses: redhat-actions/oc-login@v1
