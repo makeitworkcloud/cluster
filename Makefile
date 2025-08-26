@@ -88,4 +88,3 @@ argocd-sync: argocd-login
 	@argocd app sync gitops-configs
 
 sync: argocd-sync
-
